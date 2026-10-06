@@ -1293,6 +1293,555 @@ function submitOrder(event) {
 displayProducts();
 
 </script>
+<!-- ============================= -->
+<!-- CRÉATION DE PARFUM AVEC IA -->
+<!-- ============================= -->
 
+<section id="parfum-ia" class="ai-perfume-section">
+
+  <div class="ai-container">
+
+    <div class="ai-header">
+      <span class="ai-badge">✨ ASSISTANT IA</span>
+
+      <h2>Crée ton parfum personnalisé</h2>
+
+      <p>
+        Réponds à quelques questions et notre assistant t'aide à imaginer
+        une fragrance qui correspond à ton style.
+      </p>
+    </div>
+
+
+    <div class="ai-card">
+
+      <!-- ÉTAPE 1 -->
+      <div class="ai-step active" id="step1">
+
+        <div class="step-number">01</div>
+
+        <h3>Pour qui est ce parfum ?</h3>
+
+        <div class="choice-grid">
+
+          <button onclick="selectChoice(this,'gender','Homme')">
+            👨 Homme
+          </button>
+
+          <button onclick="selectChoice(this,'gender','Femme')">
+            👩 Femme
+          </button>
+
+          <button onclick="selectChoice(this,'gender','Unisexe')">
+            ✨ Unisexe
+          </button>
+
+        </div>
+
+        <button class="ai-next" onclick="nextStep(2)">
+          Continuer →
+        </button>
+
+      </div>
+
+
+      <!-- ÉTAPE 2 -->
+      <div class="ai-step" id="step2">
+
+        <div class="step-number">02</div>
+
+        <h3>Quel style de parfum recherches-tu ?</h3>
+
+        <div class="choice-grid">
+
+          <button onclick="selectChoice(this,'style','Frais')">
+            🍋 Frais
+          </button>
+
+          <button onclick="selectChoice(this,'style','Sucré')">
+            🍦 Sucré
+          </button>
+
+          <button onclick="selectChoice(this,'style','Boisé')">
+            🌲 Boisé
+          </button>
+
+          <button onclick="selectChoice(this,'style','Oriental')">
+            🕌 Oriental
+          </button>
+
+          <button onclick="selectChoice(this,'style','Floral')">
+            🌹 Floral
+          </button>
+
+          <button onclick="selectChoice(this,'style','Fruité')">
+            🍑 Fruité
+          </button>
+
+          <button onclick="selectChoice(this,'style','Épicé')">
+            🌶️ Épicé
+          </button>
+
+          <button onclick="selectChoice(this,'style','Propre / Musqué')">
+            🤍 Musqué
+          </button>
+
+        </div>
+
+        <button class="ai-next" onclick="nextStep(3)">
+          Continuer →
+        </button>
+
+      </div>
+
+
+      <!-- ÉTAPE 3 -->
+      <div class="ai-step" id="step3">
+
+        <div class="step-number">03</div>
+
+        <h3>Quelles notes aimes-tu ?</h3>
+
+        <p class="small-text">
+          Sélectionne une ou plusieurs notes.
+        </p>
+
+        <div class="notes-grid">
+
+          <button onclick="toggleNote(this,'Vanille')">Vanille</button>
+          <button onclick="toggleNote(this,'Oud')">Oud</button>
+          <button onclick="toggleNote(this,'Ambre')">Ambre</button>
+          <button onclick="toggleNote(this,'Musc')">Musc</button>
+          <button onclick="toggleNote(this,'Rose')">Rose</button>
+          <button onclick="toggleNote(this,'Jasmin')">Jasmin</button>
+          <button onclick="toggleNote(this,'Bergamote')">Bergamote</button>
+          <button onclick="toggleNote(this,'Agrumes')">Agrumes</button>
+          <button onclick="toggleNote(this,'Santal')">Santal</button>
+          <button onclick="toggleNote(this,'Cèdre')">Cèdre</button>
+          <button onclick="toggleNote(this,'Safran')">Safran</button>
+          <button onclick="toggleNote(this,'Fève tonka')">Fève tonka</button>
+          <button onclick="toggleNote(this,'Fruits rouges')">Fruits rouges</button>
+          <button onclick="toggleNote(this,'Pêche')">Pêche</button>
+          <button onclick="toggleNote(this,'Tabac')">Tabac</button>
+          <button onclick="toggleNote(this,'Cuir')">Cuir</button>
+
+        </div>
+
+        <button class="ai-next" onclick="nextStep(4)">
+          Continuer →
+        </button>
+
+      </div>
+
+
+      <!-- ÉTAPE 4 -->
+      <div class="ai-step" id="step4">
+
+        <div class="step-number">04</div>
+
+        <h3>Quelle intensité souhaites-tu ?</h3>
+
+        <div class="choice-grid">
+
+          <button onclick="selectChoice(this,'intensity','Légère')">
+            🌿 Légère
+          </button>
+
+          <button onclick="selectChoice(this,'intensity','Modérée')">
+            🌸 Modérée
+          </button>
+
+          <button onclick="selectChoice(this,'intensity','Forte')">
+            🔥 Forte
+          </button>
+
+          <button onclick="selectChoice(this,'intensity','Très forte')">
+            💥 Très forte
+          </button>
+
+        </div>
+
+        <button class="ai-next" onclick="generatePerfume()">
+          ✨ Créer mon parfum
+        </button>
+
+      </div>
+
+
+      <!-- RÉSULTAT -->
+      <div class="ai-result" id="aiResult">
+
+        <div class="result-icon">✨</div>
+
+        <span class="ai-badge">VOTRE CRÉATION</span>
+
+        <h2 id="perfumeName">Votre parfum</h2>
+
+        <p id="perfumeDescription"></p>
+
+
+        <div class="result-box">
+
+          <h4>Notes de tête</h4>
+          <p id="topNotes"></p>
+
+        </div>
+
+
+        <div class="result-box">
+
+          <h4>Notes de cœur</h4>
+          <p id="heartNotes"></p>
+
+        </div>
+
+
+        <div class="result-box">
+
+          <h4>Notes de fond</h4>
+          <p id="baseNotes"></p>
+
+        </div>
+
+
+        <div class="result-info">
+
+          <div>
+            <span>Style</span>
+            <strong id="resultStyle"></strong>
+          </div>
+
+          <div>
+            <span>Intensité</span>
+            <strong id="resultIntensity"></strong>
+          </div>
+
+        </div>
+
+
+        <button class="ai-order" onclick="contactForPerfume()">
+          🧴 Je veux créer ce parfum
+        </button>
+
+        <button class="ai-restart" onclick="restartAI()">
+          ↻ Recommencer
+
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<style>
+
+/* ============================= */
+/* SECTION IA */
+/* ============================= */
+
+.ai-perfume-section {
+  padding: 90px 20px;
+  background: #f7f5f1;
+  color: #111;
+}
+
+.ai-container {
+  max-width: 900px;
+  margin: auto;
+}
+
+.ai-header {
+  text-align: center;
+  margin-bottom: 45px;
+}
+
+.ai-badge {
+  display: inline-block;
+  font-size: 12px;
+  letter-spacing: 2px;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+.ai-header h2 {
+  font-size: 42px;
+  margin: 10px 0;
+  font-weight: 600;
+}
+
+.ai-header p {
+  max-width: 600px;
+  margin: auto;
+  color: #666;
+  line-height: 1.7;
+}
+
+
+/* CARTE */
+
+.ai-card {
+  background: white;
+  border-radius: 22px;
+  padding: 45px;
+  box-shadow: 0 15px 50px rgba(0,0,0,0.08);
+}
+
+.ai-step {
+  display: none;
+}
+
+.ai-step.active {
+  display: block;
+}
+
+.step-number {
+  font-size: 13px;
+  letter-spacing: 3px;
+  color: #888;
+  margin-bottom: 15px;
+}
+
+.ai-step h3 {
+  font-size: 27px;
+  margin-bottom: 30px;
+}
+
+
+/* CHOIX */
+
+.choice-grid {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 14px;
+}
+
+.choice-grid button,
+.notes-grid button {
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  padding: 18px 12px;
+  cursor: pointer;
+  font-size: 15px;
+  transition: 0.25s;
+}
+
+.choice-grid button:hover,
+.notes-grid button:hover {
+  border-color: #111;
+  transform: translateY(-2px);
+}
+
+.choice-grid button.selected,
+.notes-grid button.selected {
+  background: #111;
+  color: white;
+  border-color: #111;
+}
+
+
+/* NOTES */
+
+.notes-grid {
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+  gap: 10px;
+}
+
+.notes-grid button {
+  padding: 14px 8px;
+}
+
+.small-text {
+  color: #777;
+  margin-top: -20px;
+  margin-bottom: 25px;
+}
+
+
+/* BOUTONS */
+
+.ai-next {
+  margin-top: 35px;
+  width: 100%;
+  border: none;
+  background: #111;
+  color: white;
+  padding: 17px;
+  border-radius: 10px;
+  font-size: 15px;
+  cursor: pointer;
+  transition: 0.25s;
+}
+
+.ai-next:hover {
+  opacity: 0.85;
+}
+
+
+/* RESULTAT */
+
+.ai-result {
+  display: none;
+  text-align: center;
+}
+
+.ai-result.show {
+  display: block;
+}
+
+.result-icon {
+  font-size: 45px;
+  margin-bottom: 15px;
+}
+
+.ai-result h2 {
+  font-size: 36px;
+  margin: 10px 0;
+}
+
+#perfumeDescription {
+  color: #666;
+  line-height: 1.7;
+  margin-bottom: 30px;
+}
+
+.result-box {
+  text-align: left;
+  background: #f7f5f1;
+  padding: 20px;
+  border-radius: 12px;
+  margin-bottom: 12px;
+}
+
+.result-box h4 {
+  margin: 0 0 8px;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.result-box p {
+  margin: 0;
+  color: #555;
+}
+
+
+.result-info {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+  margin: 20px 0;
+}
+
+.result-info div {
+  background: #f7f5f1;
+  padding: 18px;
+  border-radius: 12px;
+}
+
+.result-info span {
+  display: block;
+  font-size: 12px;
+  color: #888;
+  margin-bottom: 5px;
+}
+
+.result-info strong {
+  font-size: 15px;
+}
+
+
+/* COMMANDER */
+
+.ai-order {
+  width: 100%;
+  border: none;
+  background: #111;
+  color: white;
+  padding: 18px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 15px;
+  margin-top: 10px;
+}
+
+.ai-restart {
+  margin-top: 15px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  color: #555;
+}
+
+
+/* MOBILE */
+
+@media(max-width:700px) {
+
+  .ai-perfume-section {
+    padding: 60px 15px;
+  }
+
+  .ai-header h2 {
+    font-size: 30px;
+  }
+
+  .ai-card {
+    padding: 25px 18px;
+  }
+
+  .choice-grid {
+    grid-template-columns: repeat(2,1fr);
+  }
+
+  .notes-grid {
+    grid-template-columns: repeat(2,1fr);
+  }
+
+  .ai-step h3 {
+    font-size: 23px;
+  }
+
+  .result-info {
+    grid-template-columns: 1fr;
+  }
+
+}
+
+</style>
+
+
+<script>
+
+/* ============================= */
+/* DONNÉES DU PARFUM */
+/* ============================= */
+
+let perfumeData = {
+  gender: "",
+  style: "",
+  intensity: "",
+  notes: []
+};
+
+
+/* ============================= */
+/* CHOIX */
+/* ============================= */
+
+function selectChoice(button, type, value) {
+
+  const parent = button.parentElement;
+
+  parent.querySelectorAll("button").forEach(btn => {
+    btn.classList.remove("selected");
+  });
+
+  button
 </body>
 </html>
