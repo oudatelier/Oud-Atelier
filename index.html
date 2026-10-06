@@ -1,455 +1,1283 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Oud Atelier — Parfums d'exception</title>
+<title>Oud Atelier — Parfums d'exception</title>
 
-  <meta
-    name="description"
-    content="Oud Atelier — Parfums d'exception. Découvrez notre sélection de parfums et commandez en ligne."
+<style>
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background: #12372a;
+  color: #f5f1e8;
+}
+
+/* HEADER */
+
+header {
+  background: #17130f;
+  color: white;
+  padding: 18px 25px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.logo {
+  font-size: 25px;
+  font-weight: bold;
+  letter-spacing: 2px;
+}
+
+.cart {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 17px;
+  cursor: pointer;
+}
+
+/* HERO */
+
+.hero {
+  min-height: 430px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 40px 20px;
+  background: #0b241b;
+}
+
+.hero h1 {
+  font-size: 48px;
+  letter-spacing: 5px;
+  margin-bottom: 15px;
+}
+
+.hero p {
+  font-size: 18px;
+  margin-bottom: 25px;
+}
+
+/* BOUTONS */
+
+.button {
+  background: #17130f;
+  color: white;
+  padding: 13px 25px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 15px;
+  transition: 0.3s;
+}
+
+.button:hover {
+  transform: scale(1.04);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+}
+
+/* SECTION */
+
+.section {
+  padding: 45px 20px;
+  max-width: 1250px;
+  margin: auto;
+}
+
+.section h2 {
+  text-align: center;
+  margin-bottom: 30px;
+  font-size: 30px;
+}
+
+/* RECHERCHE */
+
+.search-box {
+  max-width: 650px;
+  margin: 0 auto 35px;
+  position: relative;
+}
+
+.search-box input {
+  width: 100%;
+  padding: 16px 20px 16px 52px;
+  border: none;
+  border-radius: 30px;
+  font-size: 16px;
+  outline: none;
+  margin: 0;
+}
+
+.search-icon {
+  position: absolute;
+  left: 18px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #555;
+  font-size: 22px;
+}
+
+/* PRODUITS */
+
+.products {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 25px;
+}
+
+.product {
+  background: white;
+  padding: 18px;
+  border-radius: 12px;
+  text-align: center;
+  color: #17130f;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.12);
+  transition: 0.3s;
+}
+
+.product:hover {
+  transform: translateY(-7px);
+  box-shadow: 0 15px 35px rgba(0,0,0,0.25);
+}
+
+.product-image {
+  height: 210px;
+  background: #eee7dd;
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 55px;
+  margin-bottom: 15px;
+}
+
+.product h3 {
+  font-size: 20px;
+  margin-bottom: 15px;
+}
+
+/* FORMATS */
+
+.size-title {
+  font-size: 14px;
+  font-weight: bold;
+  margin-top: 10px;
+  margin-bottom: 7px;
+  text-align: left;
+}
+
+.size-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #f4f1eb;
+  border-radius: 7px;
+  padding: 9px 10px;
+  margin-bottom: 8px;
+}
+
+.size-name {
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.size-price {
+  font-size: 13px;
+  color: #555;
+  margin-left: auto;
+  margin-right: 10px;
+}
+
+.quantity {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.quantity button {
+  width: 28px;
+  height: 28px;
+  border: none;
+  border-radius: 50%;
+  background: #17130f;
+  color: white;
+  cursor: pointer;
+  font-size: 17px;
+}
+
+.quantity span {
+  min-width: 20px;
+  text-align: center;
+  font-weight: bold;
+}
+
+.add-button {
+  width: 100%;
+  margin-top: 12px;
+}
+
+/* PANIER */
+
+#cartPanel {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.65);
+  z-index: 100;
+  overflow-y: auto;
+}
+
+.cart-box {
+  background: #111;
+  width: min(550px, 94%);
+  max-height: 92vh;
+  overflow-y: auto;
+  margin: 4vh auto;
+  padding: 25px;
+  border-radius: 12px;
+}
+
+.close {
+  float: right;
+  border: none;
+  background: none;
+  color: red;
+  font-size: 27px;
+  cursor: pointer;
+}
+
+.cart-box h2 {
+  margin-bottom: 20px;
+}
+
+.cart-item {
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+  padding: 13px 0;
+  border-bottom: 1px solid #444;
+}
+
+.cart-item button {
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+.cart-total {
+  margin-top: 20px;
+  margin-bottom: 15px;
+}
+
+/* FORMULAIRE */
+
+form {
+  margin-top: 25px;
+}
+
+input,
+textarea,
+select {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 12px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 15px;
+}
+
+textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+/* CONTACT */
+
+.contact-section {
+  background: #0b241b;
+  text-align: center;
+  padding: 50px 20px;
+}
+
+.contact-section h2 {
+  font-size: 30px;
+  margin-bottom: 30px;
+}
+
+.contact-container {
+  max-width: 900px;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+
+.contact-card {
+  background: #17130f;
+  color: white;
+  text-decoration: none;
+  padding: 20px 25px;
+  border-radius: 10px;
+  min-width: 240px;
+  transition: 0.3s;
+}
+
+.contact-card:hover {
+  transform: translateY(-5px);
+}
+
+.contact-icon {
+  font-size: 30px;
+  margin-bottom: 10px;
+}
+
+.contact-title {
+  font-weight: bold;
+  margin-bottom: 6px;
+}
+
+.contact-info {
+  font-size: 14px;
+  opacity: 0.9;
+}
+
+/* FOOTER */
+
+footer {
+  background: #17130f;
+  color: white;
+  text-align: center;
+  padding: 30px;
+}
+
+/* MOBILE */
+
+@media (max-width: 600px) {
+
+  .hero h1 {
+    font-size: 35px;
+  }
+
+  header {
+    padding: 15px;
+  }
+
+  .logo {
+    font-size: 20px;
+  }
+
+  .cart {
+    font-size: 14px;
+  }
+
+  .products {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-card {
+    width: 100%;
+  }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+
+<header>
+
+  <div class="logo">
+    OUD ATELIER
+  </div>
+
+  <button class="cart" onclick="openCart()">
+    🛒 Panier (<span id="cartCount">0</span>)
+  </button>
+
+</header>
+
+
+<!-- HERO -->
+
+<section class="hero">
+
+  <h1>OUD ATELIER</h1>
+
+  <p>Parfums d'exception</p>
+
+  <button
+    class="button"
+    onclick="document.getElementById('products').scrollIntoView()"
   >
+    Découvrir nos parfums
+  </button>
 
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      font-family: Arial, Helvetica, sans-serif;
-      background: #090909;
-      color: #fff;
-      line-height: 1.5;
-    }
-
-    button,
-    input,
-    select,
-    textarea {
-      font: inherit;
-    }
-
-    a {
-      color: inherit;
-    }
-
-    /* =========================
-       HEADER
-    ========================= */
-
-    header {
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      background: rgba(5, 5, 5, 0.95);
-      border-bottom: 1px solid #222;
-      backdrop-filter: blur(10px);
-    }
-
-    .header-inner {
-      max-width: 1200px;
-      margin: auto;
-      padding: 18px 20px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 20px;
-    }
-
-    .logo {
-      font-size: 24px;
-      font-weight: 800;
-      letter-spacing: 2px;
-      text-decoration: none;
-    }
-
-    .cart-button {
-      border: 1px solid #444;
-      background: #151515;
-      color: white;
-      padding: 10px 16px;
-      border-radius: 10px;
-      cursor: pointer;
-    }
-
-    .cart-button:hover {
-      background: #222;
-    }
-
-    /* =========================
-       HERO
-    ========================= */
-
-    .hero {
-      min-height: 520px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 80px 20px;
-      background:
-        radial-gradient(circle at center, #18352b 0%, #0d1714 35%, #090909 75%);
-    }
-
-    .hero-content {
-      max-width: 800px;
-    }
-
-    .hero h1 {
-      font-size: clamp(42px, 8vw, 78px);
-      letter-spacing: 5px;
-      margin-bottom: 20px;
-    }
-
-    .hero p {
-      color: #ccc;
-      font-size: 19px;
-      margin-bottom: 30px;
-    }
-
-    .hero-button {
-      display: inline-block;
-      background: white;
-      color: #000;
-      padding: 14px 25px;
-      border-radius: 10px;
-      text-decoration: none;
-      font-weight: bold;
-    }
-
-    /* =========================
-       SECTIONS
-    ========================= */
-
-    .section {
-      max-width: 1200px;
-      margin: auto;
-      padding: 70px 20px;
-    }
-
-    .section-title {
-      text-align: center;
-      font-size: 34px;
-      margin-bottom: 12px;
-    }
-
-    .section-subtitle {
-      text-align: center;
-      color: #999;
-      margin-bottom: 35px;
-    }
-
-    /* =========================
-       SEARCH
-    ========================= */
-
-    .search-box {
-      max-width: 600px;
-      margin: 0 auto 40px;
-    }
-
-    .search-box input {
-      width: 100%;
-      padding: 16px 18px;
-      border-radius: 12px;
-      border: 1px solid #333;
-      background: #141414;
-      color: white;
-      outline: none;
-    }
-
-    .search-box input:focus {
-      border-color: #777;
-    }
-
-    /* =========================
-       PRODUCTS
-    ========================= */
-
-    .products-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 20px;
-    }
-
-    .product-card {
-      background: #121212;
-      border: 1px solid #222;
-      border-radius: 16px;
-      overflow: hidden;
-      transition: transform 0.2s, border-color 0.2s;
-    }
-
-    .product-card:hover {
-      transform: translateY(-4px);
-      border-color: #555;
-    }
-
-    .product-image {
-      height: 230px;
-      background:
-        radial-gradient(circle at center, #25483b, #111 65%);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 70px;
-    }
-
-    .product-info {
-      padding: 18px;
-    }
-
-    .product-name {
-      font-size: 18px;
-      font-weight: bold;
-      margin-bottom: 15px;
-      min-height: 50px;
-    }
-
-    .size-select {
-      width: 100%;
-      padding: 10px;
-      margin-bottom: 10px;
-      background: #1b1b1b;
-      border: 1px solid #333;
-      color: white;
-      border-radius: 8px;
-    }
-
-    .product-price {
-      color: #ddd;
-      font-weight: bold;
-      margin-bottom: 12px;
-    }
-
-    .quantity-row {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      margin-bottom: 12px;
-    }
-
-    .quantity-row button {
-      width: 35px;
-      height: 35px;
-      border: 1px solid #444;
-      background: #1d1d1d;
-      color: white;
-      border-radius: 7px;
-      cursor: pointer;
-    }
-
-    .quantity-value {
-      min-width: 30px;
-      text-align: center;
-    }
-
-    .add-button {
-      width: 100%;
-      padding: 12px;
-      background: white;
-      color: black;
-      border: none;
-      border-radius: 9px;
-      cursor: pointer;
-      font-weight: bold;
-    }
-
-    .add-button:hover {
-      background: #ddd;
-    }
-
-    /* =========================
-       ORDER
-    ========================= */
-
-    .order-section {
-      background: #0e0e0e;
-      border-top: 1px solid #1e1e1e;
-      border-bottom: 1px solid #1e1e1e;
-    }
-
-    .order-container {
-      max-width: 800px;
-      margin: auto;
-      padding: 70px 20px;
-    }
-
-    .form-group {
-      margin-bottom: 18px;
-    }
-
-    .form-group label {
-      display: block;
-      margin-bottom: 7px;
-      color: #ddd;
-      font-weight: bold;
-    }
-
-    .form-group input,
-    .form-group select,
-    .form-group textarea {
-      width: 100%;
-      padding: 13px;
-      border-radius: 9px;
-      border: 1px solid #333;
-      background: #161616;
-      color: white;
-      outline: none;
-    }
-
-    .form-group textarea {
-      min-height: 100px;
-      resize: vertical;
-    }
-
-    .delivery-box {
-      background: #151515;
-      border: 1px solid #292929;
-      padding: 18px;
-      border-radius: 12px;
-      margin-bottom: 20px;
-    }
-
-    .delivery-option {
-      display: flex;
-      gap: 10px;
-      margin: 10px 0;
-      align-items: center;
-      cursor: pointer;
-    }
-
-    .order-summary {
-      background: #151515;
-      padding: 20px;
-      border-radius: 12px;
-      margin: 25px 0;
-    }
-
-    .order-summary h3 {
-      margin-bottom: 15px;
-    }
-
-    .order-total {
-      border-top: 1px solid #333;
-      margin-top: 15px;
-      padding-top: 15px;
-      font-size: 20px;
-      font-weight: bold;
-    }
-
-    .submit-order {
-      width: 100%;
-      padding: 16px;
-      background: white;
-      color: black;
-      border: none;
-      border-radius: 10px;
-      cursor: pointer;
-      font-weight: bold;
-      font-size: 17px;
-    }
-
-    .submit-order:hover {
-      background: #ddd;
-    }
-
-    /* =========================
-       BOUTIQUE
-    ========================= */
-
-    .boutique-section {
-      padding: 70px 20px;
-      background: #0b0b0b;
-    }
-
-    .boutique-container {
-      max-width: 1100px;
-      margin: auto;
-    }
-
-    .boutique-title {
-      text-align: center;
-      margin-bottom: 40px;
-    }
-
-    .boutique-title h2 {
-      font-size: 34px;
-      margin-bottom: 8px;
-    }
-
-    .boutique-title p {
-      color: #999;
-    }
-
-    .boutique-grid {
-      display: grid;
-      grid-template-columns: 380px 1fr;
-      gap: 30px;
-    }
-
-    .address-card {
-      background: #151515;
-      border-radius: 18px;
-      padding: 35px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-    }
-
-    .address-label {
-      color: #999;
-      font-size: 14px;
-      margin-bottom: 8px;
-    }
-
-    .address-card h3 {
-      font-size: 24px;
-      margin-bottom: 15px;
-    }
-
-    .address-card p {
-      color: #ddd;
-      line-height: 1.8;
-      margin-bottom: 20px;
-    }
-
-    .maps-button {
-      display: block;
-      text-align: center;
-      padding: 14px 20px;
-      background: white;
-      color: black;
-      border-radius: 10px;
-      text-decoration: none;
-      font-weight: bold;
-    }
-
-    .map-container {
-      min-height: 390px;
-      border-radius: 18px;
-      overflow: hidden;
-      background: #151515;
-    }
-
-    .map-container iframe {
-      width: 100%;
-      height: 100%;
-      min-height: 390px;
-      border: 0;
-      display: block;
-    }
-
-    /* =========================
-       FOOTER
-    ========================= */
-
-    footer {
-      background: #050505;
+</section>
+
+
+<!-- PRODUITS -->
+
+<section class="section" id="products">
+
+  <h2>Nos parfums</h2>
+
+
+  <!-- RECHERCHE -->
+
+  <div class="search-box">
+
+    <span class="search-icon">🔎</span>
+
+    <input
+      id="searchInput"
+      type="text"
+      placeholder="Rechercher un parfum..."
+      oninput="searchProducts()"
+    >
+
+  </div>
+
+
+  <!-- LES PRODUITS SONT CRÉÉS AUTOMATIQUEMENT -->
+
+  <div
+    class="products"
+    id="productList"
+  ></div>
+
+</section>
+
+
+<!-- PANIER -->
+
+<div id="cartPanel">
+
+  <div class="cart-box">
+
+    <button
+      class="close"
+      onclick="closeCart()"
+    >
+      ×
+    </button>
+
+    <h2>🛒 Votre panier</h2>
+
+    <div id="cartItems"></div>
+
+    <h3
+      id="cartTotal"
+      class="cart-total"
+    >
+      Total : 0 DA
+    </h3>
+
+
+    <form onsubmit="submitOrder(event)">
+
+      <h3>Informations client</h3>
+
+      <br>
+
+      <input
+        id="name"
+        type="text"
+        placeholder="Nom et prénom"
+        required
+      >
+
+      <input
+        id="phone"
+        type="tel"
+        placeholder="Numéro de téléphone"
+        required
+      >
+
+      <select id="wilaya" required>
+
+        <option value="">
+          Choisir votre wilaya
+        </option>
+
+        <option>Adrar</option>
+        <option>Chlef</option>
+        <option>Laghouat</option>
+        <option>Oum El Bouaghi</option>
+        <option>Batna</option>
+        <option>Béjaïa</option>
+        <option>Biskra</option>
+        <option>Béchar</option>
+        <option>Blida</option>
+        <option>Bouira</option>
+        <option>Tamanrasset</option>
+        <option>Tébessa</option>
+        <option>Tlemcen</option>
+        <option>Tiaret</option>
+        <option>Tizi Ouzou</option>
+        <option>Alger</option>
+        <option>Djelfa</option>
+        <option>Jijel</option>
+        <option>Sétif</option>
+        <option>Saïda</option>
+        <option>Skikda</option>
+        <option>Sidi Bel Abbès</option>
+        <option>Annaba</option>
+        <option>Guelma</option>
+        <option>Constantine</option>
+        <option>Médéa</option>
+        <option>Mostaganem</option>
+        <option>M'Sila</option>
+        <option>Mascara</option>
+        <option>Ouargla</option>
+        <option>Oran</option>
+        <option>El Bayadh</option>
+        <option>Illizi</option>
+        <option>Bordj Bou Arréridj</option>
+        <option>Boumerdès</option>
+        <option>El Tarf</option>
+        <option>Tindouf</option>
+        <option>Tissemsilt</option>
+        <option>El Oued</option>
+        <option>Khenchela</option>
+        <option>Souk Ahras</option>
+        <option>Tipaza</option>
+        <option>Mila</option>
+        <option>Aïn Defla</option>
+        <option>Naâma</option>
+        <option>Aïn Témouchent</option>
+        <option>Ghardaïa</option>
+        <option>Relizane</option>
+        <option>Timimoun</option>
+        <option>Bordj Badji Mokhtar</option>
+        <option>Ouled Djellal</option>
+        <option>Béni Abbès</option>
+        <option>In Salah</option>
+        <option>In Guezzam</option>
+        <option>Touggourt</option>
+        <option>Djanet</option>
+        <option>El M'Ghair</option>
+        <option>El Meniaa</option>
+
+      </select>
+
+
+      <textarea
+        id="address"
+        placeholder="Adresse de livraison"
+        required
+      ></textarea>
+
+
+      <button
+        class="button"
+        type="submit"
+      >
+        Confirmer la commande
+      </button>
+
+    </form>
+
+  </div>
+
+</div>
+
+
+<!-- CONTACT -->
+
+<section class="contact-section">
+
+  <h2>Contactez-nous</h2>
+
+  <div class="contact-container">
+
+
+    <!-- TELEPHONE -->
+
+    <a
+      class="contact-card"
+      href="tel:0782496130"
+    >
+
+      <div class="contact-icon">
+        📞
+      </div>
+
+      <div class="contact-title">
+        Téléphone
+      </div>
+
+      <div class="contact-info">
+        0782 49 61 30
+      </div>
+
+    </a>
+
+
+    <!-- EMAIL -->
+
+    <a
+      class="contact-card"
+      href="mailto:contact@oudatelier.dz"
+    >
+
+      <div class="contact-icon">
+        ✉️
+      </div>
+
+      <div class="contact-title">
+        E-mail
+      </div>
+
+      <div class="contact-info">
+        contact@oudatelier.dz
+      </div>
+
+    </a>
+
+
+    <!-- INSTAGRAM -->
+
+    <a
+      class="contact-card"
+      href="https://www.instagram.com/oud_atelier_alger/"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+
+      <div class="contact-icon">
+        📸
+      </div>
+
+      <div class="contact-title">
+        Instagram
+      </div>
+
+      <div class="contact-info">
+        @oud_atelier_alger
+      </div>
+
+    </a>
+
+  </div>
+
+</section>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+  <p>© 2026 Oud Atelier</p>
+
+  <p>Parfums d'exception</p>
+
+</footer>
+
+
+<script>
+
+/* =====================================================
+   LISTE DES PARFUMS
+   ===================================================== */
+
+const perfumes = [
+
+  "Ombre Nomade",
+  "Angel's Share",
+  "Hacivat",
+  "Grand Soir",
+
+  "Immensité",
+  "Cherry Smoke",
+  "Santal 33",
+  "Nuit de Feu",
+  "Gris Dior",
+  "Babycat",
+  "Vanilla Powder",
+  "Oud Ispahan",
+  "Bitter Peach",
+  "Love Don't Be Shy",
+  "Portrait of a Lady",
+  "Mojave Ghost",
+  "Afternoon Swim",
+  "Pacific Chill",
+  "Baccarat Rouge 540",
+  "Arabian Tonka",
+  "God of Fire",
+  "Blanche Bête",
+  "Gris Charnel",
+  "Lost Cherry"
+
+];
+
+
+/* =====================================================
+   PRIX
+   Pour le moment : prix de démonstration
+   ===================================================== */
+
+const price50 = 2500;
+const price100 = 4000;
+
+
+/* =====================================================
+   PANIER
+   ===================================================== */
+
+let cart = [];
+
+
+/* =====================================================
+   CRÉATION AUTOMATIQUE DES PRODUITS
+   ===================================================== */
+
+function displayProducts(list = perfumes) {
+
+  const productList =
+    document.getElementById("productList");
+
+  productList.innerHTML = "";
+
+
+  if (list.length === 0) {
+
+    productList.innerHTML = `
+      <p style="
+        grid-column:1/-1;
+        text-align:center;
+        font-size:18px;
+      ">
+        Aucun parfum trouvé.
+      </p>
+    `;
+
+    return;
+  }
+
+
+  list.forEach((name, index) => {
+
+    productList.innerHTML += `
+
+      <div
+        class="product"
+        data-name="${name.toLowerCase()}"
+      >
+
+        <div class="product-image">
+          🧴
+        </div>
+
+        <h3>
+          ${name}
+        </h3>
+
+
+        <div class="size-title">
+          Choisissez votre format
+        </div>
+
+
+        <!-- 50 ML -->
+
+        <div class="size-row">
+
+          <span class="size-name">
+            50 ml
+          </span>
+
+          <span class="size-price">
+            ${price50.toLocaleString()} DA
+          </span>
+
+          <div class="quantity">
+
+            <button
+              type="button"
+              onclick="changeQuantity(${index}, '50', -1)"
+            >
+              −
+            </button>
+
+            <span id="qty-${index}-50">
+              0
+            </span>
+
+            <button
+              type="button"
+              onclick="changeQuantity(${index}, '50', 1)"
+            >
+              +
+            </button>
+
+          </div>
+
+        </div>
+
+
+        <!-- 100 ML -->
+
+        <div class="size-row">
+
+          <span class="size-name">
+            100 ml
+          </span>
+
+          <span class="size-price">
+            ${price100.toLocaleString()} DA
+          </span>
+
+          <div class="quantity">
+
+            <button
+              type="button"
+              onclick="changeQuantity(${index}, '100', -1)"
+            >
+              −
+            </button>
+
+            <span id="qty-${index}-100">
+              0
+            </span>
+
+            <button
+              type="button"
+              onclick="changeQuantity(${index}, '100', 1)"
+            >
+              +
+            </button>
+
+          </div>
+
+        </div>
+
+
+        <button
+          class="button add-button"
+          onclick="addSelectedToCart(${index})"
+        >
+          Ajouter au panier
+        </button>
+
+      </div>
+
+    `;
+
+  });
+
+}
+
+
+/* =====================================================
+   QUANTITÉ 50 / 100 ML
+   ===================================================== */
+
+function changeQuantity(index, size, amount) {
+
+  const element =
+    document.getElementById(
+      `qty-${index}-${size}`
+    );
+
+  let quantity =
+    parseInt(element.innerText);
+
+  quantity += amount;
+
+  if (quantity < 0) {
+    quantity = 0;
+  }
+
+  element.innerText = quantity;
+}
+
+
+/* =====================================================
+   AJOUTER LE FORMAT CHOISI AU PANIER
+   ===================================================== */
+
+function addSelectedToCart(index) {
+
+  const name =
+    perfumes[index];
+
+
+  const qty50 =
+    parseInt(
+      document.getElementById(
+        `qty-${index}-50`
+      ).innerText
+    );
+
+
+  const qty100 =
+    parseInt(
+      document.getElementById(
+        `qty-${index}-100`
+      ).innerText
+    );
+
+
+  if (qty50 === 0 && qty100 === 0) {
+
+    alert(
+      "Choisissez au moins une quantité en 50 ml ou 100 ml."
+    );
+
+    return;
+  }
+
+
+  if (qty50 > 0) {
+
+    addToCart(
+      name,
+      "50 ml",
+      price50,
+      qty50
+    );
+
+  }
+
+
+  if (qty100 > 0) {
+
+    addToCart(
+      name,
+      "100 ml",
+      price100,
+      qty100
+    );
+
+  }
+
+
+  /* remettre les compteurs à zéro */
+
+  document.getElementById(
+    `qty-${index}-50`
+  ).innerText = 0;
+
+
+  document.getElementById(
+    `qty-${index}-100`
+  ).innerText = 0;
+
+
+  alert(
+    name + " ajouté au panier."
+  );
+
+}
+
+
+/* =====================================================
+   AJOUT PANIER
+   ===================================================== */
+
+function addToCart(
+  name,
+  size,
+  price,
+  quantity
+) {
+
+  const existing =
+    cart.find(
+      item =>
+        item.name === name &&
+        item.size === size
+    );
+
+
+  if (existing) {
+
+    existing.quantity += quantity;
+
+  } else {
+
+    cart.push({
+
+      name: name,
+
+      size: size,
+
+      price: price,
+
+      quantity: quantity
+
+    });
+
+  }
+
+
+  updateCart();
+}
+
+
+/* =====================================================
+   AFFICHER PANIER
+   ===================================================== */
+
+function updateCart() {
+
+  const items =
+    document.getElementById("cartItems");
+
+  items.innerHTML = "";
+
+
+  let total = 0;
+
+  let count = 0;
+
+
+  cart.forEach((item, index) => {
+
+    const subtotal =
+      item.price * item.quantity;
+
+
+    total += subtotal;
+
+    count += item.quantity;
+
+
+    items.innerHTML += `
+
+      <div class="cart-item">
+
+        <div>
+
+          <strong>
+            ${item.name}
+          </strong>
+
+          <br>
+
+          ${item.size}
+
+          × ${item.quantity}
+
+          <br>
+
+          ${subtotal.toLocaleString()} DA
+
+        </div>
+
+
+        <button
+          onclick="removeItem(${index})"
+        >
+          ❌
+        </button>
+
+      </div>
+
+    `;
+
+  });
+
+
+  document.getElementById(
+    "cartTotal"
+  ).innerText =
+    "Total : " +
+    total.toLocaleString() +
+    " DA";
+
+
+  document.getElementById(
+    "cartCount"
+  ).innerText = count;
+
+}
+
+
+/* =====================================================
+   SUPPRIMER ARTICLE
+   ===================================================== */
+
+function removeItem(index) {
+
+  cart.splice(index, 1);
+
+  updateCart();
+
+}
+
+
+/* =====================================================
+   OUVRIR PANIER
+   ===================================================== */
+
+function openCart() {
+
+  document.getElementById(
+    "cartPanel"
+  ).style.display = "block";
+
+  updateCart();
+
+}
+
+
+/* =====================================================
+   FERMER PANIER
+   ===================================================== */
+
+function closeCart() {
+
+  document.getElementById(
+    "cartPanel"
+  ).style.display = "none";
+
+}
+
+
+/* =====================================================
+   RECHERCHE
+   ===================================================== */
+
+function searchProducts() {
+
+  const search =
+    document.getElementById(
+      "searchInput"
+    ).value
+    .toLowerCase()
+    .trim();
+
+
+  const filtered =
+    perfumes.filter(
+      perfume =>
+        perfume
+          .toLowerCase()
+          .includes(search)
+    );
+
+
+  displayProducts(filtered);
+
+}
+
+
+/* =====================================================
+   COMMANDE
+   ===================================================== */
+
+function submitOrder(event) {
+
+  event.preventDefault();
+
+
+  if (cart.length === 0) {
+
+    alert(
+      "Votre panier est vide."
+    );
+
+    return;
+  }
+
+
+  const name =
+    document.getElementById(
+      "name"
+    ).value;
+
+
+  const phone =
+    document.getElementById(
+      "phone"
+    ).value;
+
+
+  const wilaya =
+    document.getElementById(
+      "wilaya"
+    ).value;
+
+
+  const address =
+    document.getElementById(
+      "address"
+    ).value;
+
+
+  let order = "";
+
+
+  cart.forEach(item => {
+
+    order +=
+      item.name +
+      " — " +
+      item.size +
+      " × " +
+      item.quantity +
+      " = " +
+      (
+        item.price *
+        item.quantity
+      ).toLocaleString() +
+      " DA\n";
+
+  });
+
+
+  alert(
+
+    "Commande enregistrée !\n\n" +
+
+    "Client : " +
+    name +
+
+    "\nTéléphone : " +
+    phone +
+
+    "\nWilaya : " +
+    wilaya +
+
+    "\nAdresse : " +
+    address +
+
+    "\n\nProduits :\n" +
+
+    order
+
+  );
+
+}
+
+
+/* =====================================================
+   AFFICHER LES PRODUITS AU CHARGEMENT
+   ===================================================== */
+
+displayProducts();
+
+</script>
+
+</body>
+</html>
