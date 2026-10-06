@@ -401,50 +401,29 @@ footer {
 
 <body>
 
-<!-- HEADER -->
-
 <header>
-
-  <div class="logo">
-    OUD ATELIER
-  </div>
+  <div class="logo">OUD ATELIER</div>
 
   <button class="cart" onclick="openCart()">
     🛒 Panier (<span id="cartCount">0</span>)
   </button>
-
 </header>
 
-
-<!-- HERO -->
-
 <section class="hero">
-
   <h1>OUD ATELIER</h1>
-
   <p>Parfums d'exception</p>
 
-  <button
-    class="button"
-    onclick="document.getElementById('products').scrollIntoView()"
-  >
+  <button class="button"
+    onclick="document.getElementById('products').scrollIntoView()">
     Découvrir nos parfums
   </button>
-
 </section>
-
-
-<!-- PRODUITS -->
 
 <section class="section" id="products">
 
   <h2>Nos parfums</h2>
 
-
-  <!-- RECHERCHE -->
-
   <div class="search-box">
-
     <span class="search-icon">🔎</span>
 
     <input
@@ -453,44 +432,25 @@ footer {
       placeholder="Rechercher un parfum..."
       oninput="searchProducts()"
     >
-
   </div>
 
-
-  <!-- LES PRODUITS SONT CRÉÉS AUTOMATIQUEMENT -->
-
-  <div
-    class="products"
-    id="productList"
-  ></div>
+  <div class="products" id="productList"></div>
 
 </section>
-
-
-<!-- PANIER -->
 
 <div id="cartPanel">
 
   <div class="cart-box">
 
-    <button
-      class="close"
-      onclick="closeCart()"
-    >
-      ×
-    </button>
+    <button class="close" onclick="closeCart()">×</button>
 
     <h2>🛒 Votre panier</h2>
 
     <div id="cartItems"></div>
 
-    <h3
-      id="cartTotal"
-      class="cart-total"
-    >
+    <h3 id="cartTotal" class="cart-total">
       Total : 0 DA
     </h3>
-
 
     <form onsubmit="submitOrder(event)">
 
@@ -579,18 +539,13 @@ footer {
 
       </select>
 
-
       <textarea
         id="address"
         placeholder="Adresse de livraison"
         required
       ></textarea>
 
-
-      <button
-        class="button"
-        type="submit"
-      >
+      <button class="button" type="submit">
         Confirmer la commande
       </button>
 
@@ -600,127 +555,13 @@ footer {
 
 </div>
 
-
-<!-- CONTACT -->
-
-<section class="contact-section">
-
-  <h2>Contactez-nous</h2>
-
-  <div class="contact-container">
-
-
-    <!-- TELEPHONE -->
-
-    <a
-      class="contact-card"
-      href="tel:0782496130"
-    >
-
-      <div class="contact-icon">
-        📞
-      </div>
-
-      <div class="contact-title">
-        Téléphone
-      </div>
-
-      <div class="contact-info">
-        0782 49 61 30
-      </div>
-
-    </a>
-
-
-    <!-- EMAIL -->
-
-    <a
-      class="contact-card"
-      href="mailto:contact@oudatelier.dz"
-    >
-
-      <div class="contact-icon">
-        ✉️
-      </div>
-
-      <div class="contact-title">
-        E-mail
-      </div>
-
-      <div class="contact-info">
-        contact@oudatelier.dz
-      </div>
-
-    </a>
-
-
-    <!-- INSTAGRAM -->
-
-    <a
-      class="contact-card"
-      href="https://www.instagram.com/oud_atelier_alger/"
-      target="_blank"
-      rel="noopener noreferrer"
-    >
-
-      <div class="contact-icon">
-        📸
-      </div>
-
-      <div class="contact-title">
-        Instagram
-      </div>
-
-      <div class="contact-info">
-        @oud_atelier_alger
-      </div>
-
-    </a>
-
-  </div>
-
-</section>
-
-<!-- BOUTIQUE / LOCALISATION -->
-<div style="width:100%;height:350px;border-radius:16px;overflow:hidden;">
-  <iframe
-    src="https://www.google.com/maps?q=12%20Chem.%20Sidi%20Yahia%2C%20Bir%20Mourad%20Rais%2016000%2C%20Alger&output=embed"
-    width="100%"
-    height="100%"
-    style="border:0;"
-    allowfullscreen=""
-    loading="lazy">
-  </iframe>
-</div>
-          
-
-    </div>
-  </div>
-</section>
-<!-- FOOTER -->
-
-<footer>
-
-  <p>© 2026 Oud Atelier</p>
-
-  <p>Parfums d'exception</p>
-
-</footer>
-
-
 <script>
 
-/* =====================================================
-   LISTE DES PARFUMS
-   ===================================================== */
-
 const perfumes = [
-
   "Ombre Nomade",
   "Angel's Share",
   "Hacivat",
   "Grand Soir",
-
   "Immensité",
   "Cherry Smoke",
   "Santal 33",
@@ -741,29 +582,12 @@ const perfumes = [
   "Blanche Bête",
   "Gris Charnel",
   "Lost Cherry"
-
 ];
 
-
-/* =====================================================
-   PRIX
-   Pour le moment : prix de démonstration
-   ===================================================== */
-
-const price50 = 2500;
-const price100 = 4000;
-
-
-/* =====================================================
-   PANIER
-   ===================================================== */
+const price50 = 3900;
+const price100 = 5900;
 
 let cart = [];
-
-
-/* =====================================================
-   CRÉATION AUTOMATIQUE DES PRODUITS
-   ===================================================== */
 
 function displayProducts(list = perfumes) {
 
@@ -772,47 +596,31 @@ function displayProducts(list = perfumes) {
 
   productList.innerHTML = "";
 
-
   if (list.length === 0) {
 
-    productList.innerHTML = `
-      <p style="
-        grid-column:1/-1;
-        text-align:center;
-        font-size:18px;
-      ">
+    productList.innerHTML =
+      `<p style="grid-column:1/-1;text-align:center;font-size:18px;">
         Aucun parfum trouvé.
-      </p>
-    `;
+      </p>`;
 
     return;
   }
-
 
   list.forEach((name, index) => {
 
     productList.innerHTML += `
 
-      <div
-        class="product"
-        data-name="${name.toLowerCase()}"
-      >
+      <div class="product">
 
         <div class="product-image">
           🧴
         </div>
 
-        <h3>
-          ${name}
-        </h3>
-
+        <h3>${name}</h3>
 
         <div class="size-title">
           Choisissez votre format
         </div>
-
-
-        <!-- 50 ML -->
 
         <div class="size-row">
 
@@ -828,8 +636,7 @@ function displayProducts(list = perfumes) {
 
             <button
               type="button"
-              onclick="changeQuantity(${index}, '50', -1)"
-            >
+              onclick="changeQuantity(${index}, '50', -1)">
               −
             </button>
 
@@ -839,17 +646,13 @@ function displayProducts(list = perfumes) {
 
             <button
               type="button"
-              onclick="changeQuantity(${index}, '50', 1)"
-            >
+              onclick="changeQuantity(${index}, '50', 1)">
               +
             </button>
 
           </div>
 
         </div>
-
-
-        <!-- 100 ML -->
 
         <div class="size-row">
 
@@ -865,8 +668,7 @@ function displayProducts(list = perfumes) {
 
             <button
               type="button"
-              onclick="changeQuantity(${index}, '100', -1)"
-            >
+              onclick="changeQuantity(${index}, '100', -1)">
               −
             </button>
 
@@ -876,8 +678,7 @@ function displayProducts(list = perfumes) {
 
             <button
               type="button"
-              onclick="changeQuantity(${index}, '100', 1)"
-            >
+              onclick="changeQuantity(${index}, '100', 1)">
               +
             </button>
 
@@ -885,82 +686,55 @@ function displayProducts(list = perfumes) {
 
         </div>
 
-
         <button
+          type="button"
           class="button add-button"
-          onclick="addSelectedToCart(${index})"
-        >
+          onclick="addSelectedToCart(${index})">
+
           Ajouter au panier
+
         </button>
 
       </div>
-
     `;
-
   });
-
 }
-
-
-/* =====================================================
-   QUANTITÉ 50 / 100 ML
-   ===================================================== */
 
 function changeQuantity(index, size, amount) {
 
   const element =
-    document.getElementById(
-      `qty-${index}-${size}`
-    );
+    document.getElementById(`qty-${index}-${size}`);
 
-  let quantity =
-    parseInt(element.innerText);
+  let value =
+    parseInt(element.innerText) || 0;
 
-  quantity += amount;
+  value += amount;
 
-  if (quantity < 0) {
-    quantity = 0;
-  }
+  if (value < 0) value = 0;
 
-  element.innerText = quantity;
+  element.innerText = value;
 }
-
-
-/* =====================================================
-   AJOUTER LE FORMAT CHOISI AU PANIER
-   ===================================================== */
 
 function addSelectedToCart(index) {
 
-  const name =
-    perfumes[index];
-
+  const name = perfumes[index];
 
   const qty50 =
     parseInt(
-      document.getElementById(
-        `qty-${index}-50`
-      ).innerText
-    );
-
+      document.getElementById(`qty-${index}-50`).innerText
+    ) || 0;
 
   const qty100 =
     parseInt(
-      document.getElementById(
-        `qty-${index}-100`
-      ).innerText
-    );
-
+      document.getElementById(`qty-${index}-100`).innerText
+    ) || 0;
 
   if (qty50 === 0 && qty100 === 0) {
 
-    alert(
-      "Choisissez au moins une quantité en 50 ml ou 100 ml."
-    );
+    alert("Choisissez au moins un format.");
 
     return;
   }
-
 
   if (qty50 > 0) {
 
@@ -970,9 +744,7 @@ function addSelectedToCart(index) {
       price50,
       qty50
     );
-
   }
-
 
   if (qty100 > 0) {
 
@@ -982,39 +754,15 @@ function addSelectedToCart(index) {
       price100,
       qty100
     );
-
   }
 
+  document.getElementById(`qty-${index}-50`).innerText = 0;
+  document.getElementById(`qty-${index}-100`).innerText = 0;
 
-  /* remettre les compteurs à zéro */
-
-  document.getElementById(
-    `qty-${index}-50`
-  ).innerText = 0;
-
-
-  document.getElementById(
-    `qty-${index}-100`
-  ).innerText = 0;
-
-
-  alert(
-    name + " ajouté au panier."
-  );
-
+  alert("Parfum ajouté au panier !");
 }
 
-
-/* =====================================================
-   AJOUT PANIER
-   ===================================================== */
-
-function addToCart(
-  name,
-  size,
-  price,
-  quantity
-) {
+function addToCart(name, size, price, quantity) {
 
   const existing =
     cart.find(
@@ -1023,7 +771,6 @@ function addToCart(
         item.size === size
     );
 
-
   if (existing) {
 
     existing.quantity += quantity;
@@ -1031,53 +778,42 @@ function addToCart(
   } else {
 
     cart.push({
-
       name: name,
-
       size: size,
-
       price: price,
-
       quantity: quantity
-
     });
 
   }
 
-
   updateCart();
 }
 
-
-/* =====================================================
-   AFFICHER PANIER
-   ===================================================== */
-
 function updateCart() {
 
-  const items =
+  const cartItems =
     document.getElementById("cartItems");
 
-  items.innerHTML = "";
+  const cartCount =
+    document.getElementById("cartCount");
 
+  const cartTotal =
+    document.getElementById("cartTotal");
+
+  cartItems.innerHTML = "";
 
   let total = 0;
-
   let count = 0;
-
 
   cart.forEach((item, index) => {
 
-    const subtotal =
+    const itemTotal =
       item.price * item.quantity;
 
-
-    total += subtotal;
-
+    total += itemTotal;
     count += item.quantity;
 
-
-    items.innerHTML += `
+    cartItems.innerHTML += `
 
       <div class="cart-item">
 
@@ -1090,440 +826,556 @@ function updateCart() {
           <br>
 
           ${item.size}
-
           × ${item.quantity}
 
           <br>
 
-          ${subtotal.toLocaleString()} DA
+          ${itemTotal.toLocaleString()} DA
 
         </div>
 
-
         <button
-          onclick="removeItem(${index})"
-        >
-          ❌
+          type="button"
+          onclick="removeItem(${index})">
+
+          🗑️
+
         </button>
 
       </div>
-
     `;
-
   });
 
+  cartCount.innerText = count;
 
-  document.getElementById(
-    "cartTotal"
-  ).innerText =
+  cartTotal.innerText =
     "Total : " +
     total.toLocaleString() +
     " DA";
-
-
-  document.getElementById(
-    "cartCount"
-  ).innerText = count;
-
 }
-
-
-/* =====================================================
-   SUPPRIMER ARTICLE
-   ===================================================== */
 
 function removeItem(index) {
 
   cart.splice(index, 1);
 
   updateCart();
-
 }
-
-
-/* =====================================================
-   OUVRIR PANIER
-   ===================================================== */
 
 function openCart() {
 
-  document.getElementById(
-    "cartPanel"
-  ).style.display = "block";
-
-  updateCart();
-
+  document.getElementById("cartPanel").style.display =
+    "block";
 }
-
-
-/* =====================================================
-   FERMER PANIER
-   ===================================================== */
 
 function closeCart() {
 
-  document.getElementById(
-    "cartPanel"
-  ).style.display = "none";
-
+  document.getElementById("cartPanel").style.display =
+    "none";
 }
-
-
-/* =====================================================
-   RECHERCHE
-   ===================================================== */
 
 function searchProducts() {
 
   const search =
-    document.getElementById(
-      "searchInput"
-    ).value
-    .toLowerCase()
-    .trim();
-
+    document
+      .getElementById("searchInput")
+      .value
+      .toLowerCase()
+      .trim();
 
   const filtered =
     perfumes.filter(
       perfume =>
-        perfume
-          .toLowerCase()
-          .includes(search)
+        perfume.toLowerCase().includes(search)
     );
 
-
   displayProducts(filtered);
-
 }
-
-
-/* =====================================================
-   COMMANDE
-   ===================================================== */
 
 function submitOrder(event) {
 
   event.preventDefault();
 
-
   if (cart.length === 0) {
 
-    alert(
-      "Votre panier est vide."
-    );
+    alert("Votre panier est vide.");
 
     return;
   }
 
-
   const name =
-    document.getElementById(
-      "name"
-    ).value;
-
-
-  const phone =
-    document.getElementById(
-      "phone"
-    ).value;
-
-
-  const wilaya =
-    document.getElementById(
-      "wilaya"
-    ).value;
-
-
-  const address =
-    document.getElementById(
-      "address"
-    ).value;
-
-
-  let order = "";
-
-
-  cart.forEach(item => {
-
-    order +=
-      item.name +
-      " — " +
-      item.size +
-      " × " +
-      item.quantity +
-      " = " +
-      (
-        item.price *
-        item.quantity
-      ).toLocaleString() +
-      " DA\n";
-
-  });
-
+    document.getElementById("name").value;
 
   alert(
-
-    "Commande enregistrée !\n\n" +
-
-    "Client : " +
+    "Merci " +
     name +
-
-    "\nTéléphone : " +
-    phone +
-
-    "\nWilaya : " +
-    wilaya +
-
-    "\nAdresse : " +
-    address +
-
-    "\n\nProduits :\n" +
-
-    order
-
+    " ! Votre commande a bien été enregistrée."
   );
 
+  cart = [];
+
+  updateCart();
+
+  event.target.reset();
+
+  closeCart();
 }
-
-
-/* =====================================================
-   AFFICHER LES PRODUITS AU CHARGEMENT
-   ===================================================== */
 
 displayProducts();
 
 </script>
-<!-- ============================= -->
-<!-- CRÉATION DE PARFUM AVEC IA -->
-<!-- ============================= -->
 
-<section id="parfum-ia" class="ai-perfume-section">
+
+<!-- ========================= -->
+<!-- PARFUM PERSONNALISÉ -->
+<!-- ========================= -->
+
+<section class="ai-perfume-section">
 
   <div class="ai-container">
 
     <div class="ai-header">
-      <span class="ai-badge">✨ ASSISTANT IA</span>
 
-      <h2>Crée ton parfum personnalisé</h2>
+      <div class="ai-badge">
+        ✨ ASSISTANT IA
+      </div>
+
+      <h2>
+        Crée ton parfum personnalisé
+      </h2>
 
       <p>
-        Réponds à quelques questions et notre assistant t'aide à imaginer
-        une fragrance qui correspond à ton style.
+        Réponds à quelques questions et notre assistant
+        t'aide à imaginer une fragrance qui correspond
+        à ton style.
       </p>
-    </div>
 
+    </div>
 
     <div class="ai-card">
 
       <!-- ÉTAPE 1 -->
+
       <div class="ai-step active" id="step1">
 
-        <div class="step-number">01</div>
+        <div class="step-number">
+          ÉTAPE 1 / 4
+        </div>
 
-        <h3>Pour qui est ce parfum ?</h3>
+        <h3>
+          Pour qui est ce parfum ?
+        </h3>
 
         <div class="choice-grid">
 
-          <button onclick="selectChoice(this,'gender','Homme')">
-            👨 Homme
+          <button
+            type="button"
+            onclick="selectChoice(this,'gender','Homme')">
+
+            Homme
+
           </button>
 
-          <button onclick="selectChoice(this,'gender','Femme')">
-            👩 Femme
+          <button
+            type="button"
+            onclick="selectChoice(this,'gender','Femme')">
+
+            Femme
+
           </button>
 
-          <button onclick="selectChoice(this,'gender','Unisexe')">
-            ✨ Unisexe
+          <button
+            type="button"
+            onclick="selectChoice(this,'gender','Unisexe')">
+
+            Unisexe
+
           </button>
 
         </div>
 
-        <button class="ai-next" onclick="nextStep(2)">
+        <button
+          type="button"
+          class="ai-next"
+          onclick="nextStep(2)">
+
           Continuer →
+
         </button>
 
       </div>
 
 
       <!-- ÉTAPE 2 -->
+
       <div class="ai-step" id="step2">
 
-        <div class="step-number">02</div>
+        <div class="step-number">
+          ÉTAPE 2 / 4
+        </div>
 
-        <h3>Quel style de parfum recherches-tu ?</h3>
+        <h3>
+          Quel style de parfum ?
+        </h3>
 
         <div class="choice-grid">
 
-          <button onclick="selectChoice(this,'style','Frais')">
-            🍋 Frais
+          <button
+            type="button"
+            onclick="selectChoice(this,'style','Frais')">
+            Frais
           </button>
 
-          <button onclick="selectChoice(this,'style','Sucré')">
-            🍦 Sucré
+          <button
+            type="button"
+            onclick="selectChoice(this,'style','Sucré')">
+            Sucré
           </button>
 
-          <button onclick="selectChoice(this,'style','Boisé')">
-            🌲 Boisé
+          <button
+            type="button"
+            onclick="selectChoice(this,'style','Boisé')">
+            Boisé
           </button>
 
-          <button onclick="selectChoice(this,'style','Oriental')">
-            🕌 Oriental
+          <button
+            type="button"
+            onclick="selectChoice(this,'style','Oriental')">
+            Oriental
           </button>
 
-          <button onclick="selectChoice(this,'style','Floral')">
-            🌹 Floral
+          <button
+            type="button"
+            onclick="selectChoice(this,'style','Floral')">
+            Floral
           </button>
 
-          <button onclick="selectChoice(this,'style','Fruité')">
-            🍑 Fruité
+          <button
+            type="button"
+            onclick="selectChoice(this,'style','Fruité')">
+            Fruité
           </button>
 
-          <button onclick="selectChoice(this,'style','Épicé')">
-            🌶️ Épicé
+          <button
+            type="button"
+            onclick="selectChoice(this,'style','Épicé')">
+            Épicé
           </button>
 
-          <button onclick="selectChoice(this,'style','Propre / Musqué')">
-            🤍 Musqué
+          <button
+            type="button"
+            onclick="selectChoice(this,'style','Propre / Musqué')">
+            Propre / Musqué
           </button>
 
         </div>
 
-        <button class="ai-next" onclick="nextStep(3)">
+        <button
+          type="button"
+          class="ai-next"
+          onclick="nextStep(3)">
+
           Continuer →
+
         </button>
 
       </div>
 
 
       <!-- ÉTAPE 3 -->
+
       <div class="ai-step" id="step3">
 
-        <div class="step-number">03</div>
+        <div class="step-number">
+          ÉTAPE 3 / 4
+        </div>
 
-        <h3>Quelles notes aimes-tu ?</h3>
+        <h3>
+          Quelles notes aimerais-tu ?
+        </h3>
 
         <p class="small-text">
-          Sélectionne une ou plusieurs notes.
+          Tu peux sélectionner plusieurs notes.
         </p>
 
         <div class="notes-grid">
 
-          <button onclick="toggleNote(this,'Vanille')">Vanille</button>
-          <button onclick="toggleNote(this,'Oud')">Oud</button>
-          <button onclick="toggleNote(this,'Ambre')">Ambre</button>
-          <button onclick="toggleNote(this,'Musc')">Musc</button>
-          <button onclick="toggleNote(this,'Rose')">Rose</button>
-          <button onclick="toggleNote(this,'Jasmin')">Jasmin</button>
-          <button onclick="toggleNote(this,'Bergamote')">Bergamote</button>
-          <button onclick="toggleNote(this,'Agrumes')">Agrumes</button>
-          <button onclick="toggleNote(this,'Santal')">Santal</button>
-          <button onclick="toggleNote(this,'Cèdre')">Cèdre</button>
-          <button onclick="toggleNote(this,'Safran')">Safran</button>
-          <button onclick="toggleNote(this,'Fève tonka')">Fève tonka</button>
-          <button onclick="toggleNote(this,'Fruits rouges')">Fruits rouges</button>
-          <button onclick="toggleNote(this,'Pêche')">Pêche</button>
-          <button onclick="toggleNote(this,'Tabac')">Tabac</button>
-          <button onclick="toggleNote(this,'Cuir')">Cuir</button>
+          <button
+            type="button"
+            onclick="toggleNote(this,'Vanille')">
+            Vanille
+          </button>
+
+          <button
+            type="button"
+            onclick="toggleNote(this,'Oud')">
+            Oud
+          </button>
+
+          <button
+            type="button"
+            onclick="toggleNote(this,'Ambre')">
+            Ambre
+          </button>
+
+          <button
+            type="button"
+            onclick="toggleNote(this,'Musc')">
+            Musc
+          </button>
+
+          <button
+            type="button"
+            onclick="toggleNote(this,'Rose')">
+            Rose
+          </button>
+
+          <button
+            type="button"
+            onclick="toggleNote(this,'Jasmin')">
+            Jasmin
+          </button>
+
+          <button
+            type="button"
+            onclick="toggleNote(this,'Bergamote')">
+            Bergamote
+          </button>
+
+          <button
+            type="button"
+            onclick="toggleNote(this,'Agrumes')">
+            Agrumes
+          </button>
+
+          <button
+            type="button"
+            onclick="toggleNote(this,'Santal')">
+            Santal
+          </button>
+
+          <button
+            type="button"
+            onclick="toggleNote(this,'Cèdre')">
+            Cèdre
+          </button>
+
+          <button
+            type="button"
+            onclick="toggleNote(this,'Safran')">
+            Safran
+          </button>
+
+          <button
+            type="button"
+            onclick="toggleNote(this,'Fève tonka')">
+            Fève tonka
+          </button>
+
+          <button
+            type="button"
+            onclick="toggleNote(this,'Fruits rouges')">
+            Fruits rouges
+          </button>
+
+          <button
+            type="button"
+            onclick="toggleNote(this,'Pêche')">
+            Pêche
+          </button>
+
+          <button
+            type="button"
+            onclick="toggleNote(this,'Tabac')">
+            Tabac
+          </button>
+
+          <button
+            type="button"
+            onclick="toggleNote(this,'Cuir')">
+            Cuir
+          </button>
 
         </div>
 
-        <button class="ai-next" onclick="nextStep(4)">
+        <button
+          type="button"
+          class="ai-next"
+          onclick="nextStep(4)">
+
           Continuer →
+
         </button>
 
       </div>
 
 
       <!-- ÉTAPE 4 -->
+
       <div class="ai-step" id="step4">
 
-        <div class="step-number">04</div>
+        <div class="step-number">
+          ÉTAPE 4 / 4
+        </div>
 
-        <h3>Quelle intensité souhaites-tu ?</h3>
+        <h3>
+          Quelle intensité ?
+        </h3>
 
         <div class="choice-grid">
 
-          <button onclick="selectChoice(this,'intensity','Légère')">
-            🌿 Légère
+          <button
+            type="button"
+            onclick="selectChoice(this,'intensity','Légère')">
+            Légère
           </button>
 
-          <button onclick="selectChoice(this,'intensity','Modérée')">
-            🌸 Modérée
+          <button
+            type="button"
+            onclick="selectChoice(this,'intensity','Modérée')">
+            Modérée
           </button>
 
-          <button onclick="selectChoice(this,'intensity','Forte')">
-            🔥 Forte
+          <button
+            type="button"
+            onclick="selectChoice(this,'intensity','Forte')">
+            Forte
           </button>
 
-          <button onclick="selectChoice(this,'intensity','Très forte')">
-            💥 Très forte
+          <button
+            type="button"
+            onclick="selectChoice(this,'intensity','Très forte')">
+            Très forte
           </button>
 
         </div>
 
-        <button class="ai-next" onclick="generatePerfume()">
+        <button
+          type="button"
+          class="ai-next"
+          onclick="generatePerfume()">
+
           ✨ Créer mon parfum
+
         </button>
 
       </div>
 
 
       <!-- RÉSULTAT -->
+
       <div class="ai-result" id="aiResult">
 
-        <div class="result-icon">✨</div>
+        <div class="result-icon">
+          🧴
+        </div>
 
-        <span class="ai-badge">VOTRE CRÉATION</span>
+        <h2 id="perfumeName">
+          Signature Oud Atelier
+        </h2>
 
-        <h2 id="perfumeName">Votre parfum</h2>
-
-        <p id="perfumeDescription"></p>
-
+        <p id="perfumeDescription">
+          Votre parfum personnalisé.
+        </p>
 
         <div class="result-box">
 
-          <h4>Notes de tête</h4>
+          <h4>
+            Notes de tête
+          </h4>
+
           <p id="topNotes"></p>
 
         </div>
 
-
         <div class="result-box">
 
-          <h4>Notes de cœur</h4>
+          <h4>
+            Notes de cœur
+          </h4>
+
           <p id="heartNotes"></p>
 
         </div>
 
-
         <div class="result-box">
 
-          <h4>Notes de fond</h4>
+          <h4>
+            Notes de fond
+          </h4>
+
           <p id="baseNotes"></p>
 
         </div>
 
-
         <div class="result-info">
 
           <div>
-            <span>Style</span>
+
+            <span>
+              Style
+            </span>
+
             <strong id="resultStyle"></strong>
+
           </div>
 
           <div>
-            <span>Intensité</span>
+
+            <span>
+              Intensité
+            </span>
+
             <strong id="resultIntensity"></strong>
+
           </div>
 
         </div>
 
 
-        <button class="ai-order" onclick="contactForPerfume()">
+        <!-- PRIX PERSONNALISÉ -->
+
+        <div
+          style="
+            margin:25px 0;
+            padding:18px;
+            border:1px solid #ddd;
+            border-radius:12px;
+            background:#fff;
+            text-align:center;
+          "
+        >
+
+          <strong
+            style="
+              display:block;
+              margin-bottom:8px;
+            "
+          >
+            Prix du parfum personnalisé
+          </strong>
+
+          <span style="display:block;">
+            50 ml :
+            <strong>4 900 DA</strong>
+          </span>
+
+        </div>
+
+
+        <button
+          type="button"
+          class="ai-order"
+          onclick="contactForPerfume()">
+
           🧴 Je veux créer ce parfum
+
         </button>
 
-        <button class="ai-restart" onclick="restartAI()">
+        <button
+          type="button"
+          class="ai-restart"
+          onclick="restartAI()">
+
           ↻ Recommencer
 
         </button>
@@ -1538,10 +1390,6 @@ displayProducts();
 
 
 <style>
-
-/* ============================= */
-/* SECTION IA */
-/* ============================= */
 
 .ai-perfume-section {
   padding: 90px 20px;
@@ -1580,9 +1428,6 @@ displayProducts();
   line-height: 1.7;
 }
 
-
-/* CARTE */
-
 .ai-card {
   background: white;
   border-radius: 22px;
@@ -1609,9 +1454,6 @@ displayProducts();
   font-size: 27px;
   margin-bottom: 30px;
 }
-
-
-/* CHOIX */
 
 .choice-grid {
   display: grid;
@@ -1643,9 +1485,6 @@ displayProducts();
   border-color: #111;
 }
 
-
-/* NOTES */
-
 .notes-grid {
   display: grid;
   grid-template-columns: repeat(4,1fr);
@@ -1661,9 +1500,6 @@ displayProducts();
   margin-top: -20px;
   margin-bottom: 25px;
 }
-
-
-/* BOUTONS */
 
 .ai-next {
   margin-top: 35px;
@@ -1681,9 +1517,6 @@ displayProducts();
 .ai-next:hover {
   opacity: 0.85;
 }
-
-
-/* RESULTAT */
 
 .ai-result {
   display: none;
@@ -1730,7 +1563,6 @@ displayProducts();
   color: #555;
 }
 
-
 .result-info {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -1755,9 +1587,6 @@ displayProducts();
   font-size: 15px;
 }
 
-
-/* COMMANDER */
-
 .ai-order {
   width: 100%;
   border: none;
@@ -1777,9 +1606,6 @@ displayProducts();
   cursor: pointer;
   color: #555;
 }
-
-
-/* MOBILE */
 
 @media(max-width:700px) {
 
@@ -1816,11 +1642,122 @@ displayProducts();
 </style>
 
 
-<script>
+<!-- CONTACT APRÈS LE PARFUM PERSONNALISÉ -->
 
-/* ============================= */
-/* DONNÉES DU PARFUM */
-/* ============================= */
+<section class="contact-section">
+
+  <h2>
+    Contactez-nous
+  </h2>
+
+  <div class="contact-container">
+
+    <a
+      class="contact-card"
+      href="tel:0782496130"
+    >
+
+      <div class="contact-icon">
+        📞
+      </div>
+
+      <div class="contact-title">
+        Téléphone
+      </div>
+
+      <div class="contact-info">
+        0782 49 61 30
+      </div>
+
+    </a>
+
+
+    <a
+      class="contact-card"
+      href="mailto:contact@oudatelier.dz"
+    >
+
+      <div class="contact-icon">
+        ✉️
+      </div>
+
+      <div class="contact-title">
+        E-mail
+      </div>
+
+      <div class="contact-info">
+        contact@oudatelier.dz
+      </div>
+
+    </a>
+
+
+    <a
+      class="contact-card"
+      href="https://www.instagram.com/oud_atelier_alger/"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+
+      <div class="contact-icon">
+        📸
+      </div>
+
+      <div class="contact-title">
+        Instagram
+      </div>
+
+      <div class="contact-info">
+        @oud_atelier_alger
+      </div>
+
+    </a>
+
+  </div>
+
+</section>
+
+
+<!-- CARTE GOOGLE MAPS APRÈS CONTACT -->
+
+<div
+  style="
+    width:100%;
+    height:350px;
+    border-radius:16px;
+    overflow:hidden;
+    margin-top:0;
+  "
+>
+
+  <iframe
+    src="https://www.google.com/maps?q=12%20Chem.%20Sidi%20Yahia%2C%20Bir%20Mourad%20Rais%2016000%2C%20Alger&output=embed"
+    width="100%"
+    height="100%"
+    style="border:0;"
+    allowfullscreen=""
+    loading="lazy">
+  </iframe>
+
+</div>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+  <p>
+    © 2026 Oud Atelier
+  </p>
+
+  <p>
+    Parfums d'exception
+  </p>
+
+</footer>
+
+
+<script>
 
 let perfumeData = {
   gender: "",
@@ -1830,19 +1767,404 @@ let perfumeData = {
 };
 
 
-/* ============================= */
-/* CHOIX */
-/* ============================= */
-
 function selectChoice(button, type, value) {
 
-  const parent = button.parentElement;
+  const parent =
+    button.parentElement;
 
-  parent.querySelectorAll("button").forEach(btn => {
-    btn.classList.remove("selected");
+  parent
+    .querySelectorAll("button")
+    .forEach(btn => {
+      btn.classList.remove("selected");
+    });
+
+  button.classList.add("selected");
+
+  perfumeData[type] = value;
+}
+
+
+function toggleNote(button, note) {
+
+  button.classList.toggle("selected");
+
+  if (button.classList.contains("selected")) {
+
+    if (!perfumeData.notes.includes(note)) {
+      perfumeData.notes.push(note);
+    }
+
+  } else {
+
+    perfumeData.notes =
+      perfumeData.notes.filter(
+        n => n !== note
+      );
+
+  }
+}
+
+
+function nextStep(number) {
+
+  if (
+    number === 2 &&
+    !perfumeData.gender
+  ) {
+
+    alert(
+      "Choisis Homme, Femme ou Unisexe."
+    );
+
+    return;
+  }
+
+
+  if (
+    number === 3 &&
+    !perfumeData.style
+  ) {
+
+    alert(
+      "Choisis un style de parfum."
+    );
+
+    return;
+  }
+
+
+  if (
+    number === 4 &&
+    perfumeData.notes.length === 0
+  ) {
+
+    alert(
+      "Choisis au moins une note."
+    );
+
+    return;
+  }
+
+
+  document
+    .querySelectorAll(".ai-step")
+    .forEach(step => {
+      step.classList.remove("active");
+    });
+
+
+  document
+    .getElementById("step" + number)
+    .classList.add("active");
+}
+
+
+function generatePerfume() {
+
+  if (!perfumeData.intensity) {
+
+    alert(
+      "Choisis une intensité."
+    );
+
+    return;
+  }
+
+
+  let notes =
+    perfumeData.notes;
+
+
+  let top = [];
+  let heart = [];
+  let base = [];
+
+
+  const topCandidates = [
+    "Bergamote",
+    "Agrumes",
+    "Pêche",
+    "Fruits rouges"
+  ];
+
+
+  const heartCandidates = [
+    "Rose",
+    "Jasmin",
+    "Fève tonka",
+    "Tabac",
+    "Cuir"
+  ];
+
+
+  const baseCandidates = [
+    "Vanille",
+    "Oud",
+    "Ambre",
+    "Musc",
+    "Santal",
+    "Cèdre",
+    "Safran"
+  ];
+
+
+  notes.forEach(note => {
+
+    if (
+      topCandidates.includes(note)
+    ) {
+
+      top.push(note);
+
+    } else if (
+      heartCandidates.includes(note)
+    ) {
+
+      heart.push(note);
+
+    } else if (
+      baseCandidates.includes(note)
+    ) {
+
+      base.push(note);
+
+    }
+
   });
 
-  button
-  button
+
+  if (top.length === 0) {
+    top = ["Bergamote"];
+  }
+
+
+  if (heart.length === 0) {
+    heart = ["Jasmin"];
+  }
+
+
+  if (base.length === 0) {
+    base = ["Ambre", "Musc"];
+  }
+
+
+  let name =
+    "Signature Oud Atelier";
+
+
+  if (
+    perfumeData.style === "Frais"
+  ) {
+    name = "Éclat de Brume";
+  }
+
+
+  if (
+    perfumeData.style === "Sucré"
+  ) {
+    name = "Velours Sucré";
+  }
+
+
+  if (
+    perfumeData.style === "Boisé"
+  ) {
+    name = "Bois Royal";
+  }
+
+
+  if (
+    perfumeData.style === "Oriental"
+  ) {
+    name = "Nuit Orientale";
+  }
+
+
+  if (
+    perfumeData.style === "Floral"
+  ) {
+    name = "Jardin Précieux";
+  }
+
+
+  if (
+    perfumeData.style === "Fruité"
+  ) {
+    name = "Éclat Fruité";
+  }
+
+
+  if (
+    perfumeData.style === "Épicé"
+  ) {
+    name = "Épices Nocturnes";
+  }
+
+
+  if (
+    perfumeData.style === "Propre / Musqué"
+  ) {
+    name = "Musc Élégant";
+  }
+
+
+  document
+    .getElementById("perfumeName")
+    .innerText = name;
+
+
+  document
+    .getElementById("perfumeDescription")
+    .innerText =
+      "Une création " +
+      perfumeData.gender.toLowerCase() +
+      ", dans un style " +
+      perfumeData.style.toLowerCase() +
+      ", pensée pour une intensité " +
+      perfumeData.intensity.toLowerCase() +
+      ". Votre sélection de notes donne une signature olfactive personnalisée.";
+
+
+  document
+    .getElementById("topNotes")
+    .innerText =
+      top.join(" • ");
+
+
+  document
+    .getElementById("heartNotes")
+    .innerText =
+      heart.join(" • ");
+
+
+  document
+    .getElementById("baseNotes")
+    .innerText =
+      base.join(" • ");
+
+
+  document
+    .getElementById("resultStyle")
+    .innerText =
+      perfumeData.style;
+
+
+  document
+    .getElementById("resultIntensity")
+    .innerText =
+      perfumeData.intensity;
+
+
+  document
+    .querySelectorAll(".ai-step")
+    .forEach(step => {
+      step.classList.remove("active");
+    });
+
+
+  document
+    .getElementById("aiResult")
+    .classList.add("show");
+}
+
+
+function contactForPerfume() {
+
+  const name =
+    document
+      .getElementById("perfumeName")
+      .innerText;
+
+
+  const top =
+    document
+      .getElementById("topNotes")
+      .innerText;
+
+
+  const heart =
+    document
+      .getElementById("heartNotes")
+      .innerText;
+
+
+  const base =
+    document
+      .getElementById("baseNotes")
+      .innerText;
+
+
+  const message =
+    "Bonjour Oud Atelier,%0A%0A" +
+    "Je souhaite créer ce parfum personnalisé :%0A%0A" +
+    "Nom : " +
+    encodeURIComponent(name) +
+    "%0A" +
+    "Notes de tête : " +
+    encodeURIComponent(top) +
+    "%0A" +
+    "Notes de cœur : " +
+    encodeURIComponent(heart) +
+    "%0A" +
+    "Notes de fond : " +
+    encodeURIComponent(base) +
+    "%0A" +
+    "Style : " +
+    encodeURIComponent(
+      perfumeData.style
+    ) +
+    "%0A" +
+    "Intensité : " +
+    encodeURIComponent(
+      perfumeData.intensity
+    );
+
+
+  window.open(
+    "https://wa.me/213XXXXXXXXX?text=" +
+    message,
+    "_blank"
+  );
+}
+
+
+function restartAI() {
+
+  perfumeData = {
+    gender: "",
+    style: "",
+    intensity: "",
+    notes: []
+  };
+
+
+  document
+    .querySelectorAll(
+      ".choice-grid button, .notes-grid button"
+    )
+    .forEach(button => {
+      button.classList.remove("selected");
+    });
+
+
+  document
+    .getElementById("aiResult")
+    .classList.remove("show");
+
+
+  document
+    .querySelectorAll(".ai-step")
+    .forEach(step => {
+      step.classList.remove("active");
+    });
+
+
+  document
+    .getElementById("step1")
+    .classList.add("active");
+}
+
+</script>
+
 </body>
 </html>
