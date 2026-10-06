@@ -1,273 +1,471 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Oud Atelier — Parfums d'exception</title>
+<title>Oud Atelier — Parfums d'exception</title>
 
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+<style>
 
-    body {
-      font-family: Arial, sans-serif;
-      background: #12372a;
-      color: #f5f1e8;
-    }
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
-    header {
-      background: #17130f;
-      color: white;
-      padding: 18px 25px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      position: sticky;
-      top: 0;
-      z-index: 10;
-    }
+body {
+  font-family: Arial, sans-serif;
+  background: #12372a;
+  color: #f5f1e8;
+}
 
-    .logo {
-      font-size: 25px;
-      font-weight: bold;
-      letter-spacing: 2px;
-    }
+/* HEADER */
 
-    .cart {
-      background: none;
-      border: none;
-      color: white;
-      font-size: 18px;
-      cursor: pointer;
-    }
+header {
+  background: #17130f;
+  color: white;
+  padding: 18px 25px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
 
-    .hero {
-      min-height: 430px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      padding: 40px 20px;
-      background: #0b241b;
-    }
+.logo {
+  font-size: 25px;
+  font-weight: bold;
+  letter-spacing: 2px;
+}
 
-    .hero h1 {
-      font-size: 48px;
-      letter-spacing: 5px;
-      margin-bottom: 15px;
-    }
+.cart {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 17px;
+  cursor: pointer;
+}
 
-    .hero p {
-      font-size: 18px;
-      margin-bottom: 25px;
-    }
+/* HERO */
 
-    .button {
-      background: #17130f;
-      color: white;
-      padding: 13px 25px;
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
-      font-size: 15px;
-    }
-    .button {
+.hero {
+  min-height: 430px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 40px 20px;
+  background: #0b241b;
+}
+
+.hero h1 {
+  font-size: 48px;
+  letter-spacing: 5px;
+  margin-bottom: 15px;
+}
+
+.hero p {
+  font-size: 18px;
+  margin-bottom: 25px;
+}
+
+/* BOUTONS */
+
+.button {
+  background: #17130f;
+  color: white;
+  padding: 13px 25px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 15px;
   transition: 0.3s;
 }
 
 .button:hover {
-  transform: scale(1.05);
+  transform: scale(1.04);
   box-shadow: 0 8px 20px rgba(0,0,0,0.3);
 }
 
-    .section {
-      padding: 45px 20px;
-      max-width: 1200px;
-      margin: auto;
-    }
+/* SECTION */
 
-    .section h2 {
-      text-align: center;
-      margin-bottom: 30px;
-      font-size: 30px;
-    }
+.section {
+  padding: 45px 20px;
+  max-width: 1250px;
+  margin: auto;
+}
 
-    .products {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 25px;
-    }
+.section h2 {
+  text-align: center;
+  margin-bottom: 30px;
+  font-size: 30px;
+}
 
-    .product {
-      background: white;
-      padding: 18px;
-      border-radius: 10px;
-      text-align: center;
-      box-shadow: 0 5px 20px rgba(0,0,0,0.08);
-    }
-    .product {
+/* RECHERCHE */
+
+.search-box {
+  max-width: 650px;
+  margin: 0 auto 35px;
+  position: relative;
+}
+
+.search-box input {
+  width: 100%;
+  padding: 16px 20px 16px 52px;
+  border: none;
+  border-radius: 30px;
+  font-size: 16px;
+  outline: none;
+  margin: 0;
+}
+
+.search-icon {
+  position: absolute;
+  left: 18px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #555;
+  font-size: 22px;
+}
+
+/* PRODUITS */
+
+.products {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 25px;
+}
+
+.product {
+  background: white;
+  padding: 18px;
+  border-radius: 12px;
+  text-align: center;
+  color: #17130f;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.12);
   transition: 0.3s;
 }
 
 .product:hover {
-  transform: translateY(-8px);
+  transform: translateY(-7px);
   box-shadow: 0 15px 35px rgba(0,0,0,0.25);
 }
 
-    .product-image {
-      height: 230px;
-      background: #eee7dd;
-      border-radius: 8px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-size: 55px;
-      margin-bottom: 15px;
-    }
+.product-image {
+  height: 210px;
+  background: #eee7dd;
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 55px;
+  margin-bottom: 15px;
+}
 
-    .product h3 {
-      margin-bottom: 8px;
-    }
+.product h3 {
+  font-size: 20px;
+  margin-bottom: 15px;
+}
 
-    .price {
-      font-weight: bold;
-      margin-bottom: 15px;
-    }
+/* FORMATS */
 
-    .product button {
-      width: 100%;
-    }
+.size-title {
+  font-size: 14px;
+  font-weight: bold;
+  margin-top: 10px;
+  margin-bottom: 7px;
+  text-align: left;
+}
 
-    #cartPanel {
-      display: none;
-      position: fixed;
-      inset: 0;
-      background: rgba(0,0,0,0.55);
-      z-index: 100;
-    }
+.size-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #f4f1eb;
+  border-radius: 7px;
+  padding: 9px 10px;
+  margin-bottom: 8px;
+}
 
-    .cart-box {
-      background: black;
-      width: min(500px, 94%);
-      max-height: 90vh;
-      overflow-y: auto;
-      margin: 5vh auto;
-      padding: 25px;
-      border-radius: 10px;
-    }
+.size-name {
+  font-weight: bold;
+  font-size: 14px;
+}
 
-    .cart-item {
-      display: flex;
-      justify-content: space-between;
-      padding: 12px 0;
-      border-bottom: 1px solid #ddd;
-    }
+.size-price {
+  font-size: 13px;
+  color: #555;
+  margin-left: auto;
+  margin-right: 10px;
+}
 
-    .close {
-      float: right;
-      border: none;
-      background: none;
-      color: red;
-      font-size: 25px;
-      cursor: pointer;
-    }
+.quantity {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
 
-    form {
-      margin-top: 25px;
-    }
+.quantity button {
+  width: 28px;
+  height: 28px;
+  border: none;
+  border-radius: 50%;
+  background: #17130f;
+  color: white;
+  cursor: pointer;
+  font-size: 17px;
+}
 
-    input, textarea, select {
-      width: 100%;
-      padding: 12px;
-      margin-bottom: 12px;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-      font-size: 15px;
-    }
+.quantity span {
+  min-width: 20px;
+  text-align: center;
+  font-weight: bold;
+}
 
-    footer {
-      background: #17130f;
-      color: white;
-      text-align: center;
-      padding: 30px;
-      margin-top: 40px;
-    }
+.add-button {
+  width: 100%;
+  margin-top: 12px;
+}
 
-    @media (max-width: 600px) {
-      .hero h1 {
-        font-size: 35px;
-      }
-    }
-  </style>
+/* PANIER */
+
+#cartPanel {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.65);
+  z-index: 100;
+  overflow-y: auto;
+}
+
+.cart-box {
+  background: #111;
+  width: min(550px, 94%);
+  max-height: 92vh;
+  overflow-y: auto;
+  margin: 4vh auto;
+  padding: 25px;
+  border-radius: 12px;
+}
+
+.close {
+  float: right;
+  border: none;
+  background: none;
+  color: red;
+  font-size: 27px;
+  cursor: pointer;
+}
+
+.cart-box h2 {
+  margin-bottom: 20px;
+}
+
+.cart-item {
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+  padding: 13px 0;
+  border-bottom: 1px solid #444;
+}
+
+.cart-item button {
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+.cart-total {
+  margin-top: 20px;
+  margin-bottom: 15px;
+}
+
+/* FORMULAIRE */
+
+form {
+  margin-top: 25px;
+}
+
+input,
+textarea,
+select {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 12px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 15px;
+}
+
+textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+/* CONTACT */
+
+.contact-section {
+  background: #0b241b;
+  text-align: center;
+  padding: 50px 20px;
+}
+
+.contact-section h2 {
+  font-size: 30px;
+  margin-bottom: 30px;
+}
+
+.contact-container {
+  max-width: 900px;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+
+.contact-card {
+  background: #17130f;
+  color: white;
+  text-decoration: none;
+  padding: 20px 25px;
+  border-radius: 10px;
+  min-width: 240px;
+  transition: 0.3s;
+}
+
+.contact-card:hover {
+  transform: translateY(-5px);
+}
+
+.contact-icon {
+  font-size: 30px;
+  margin-bottom: 10px;
+}
+
+.contact-title {
+  font-weight: bold;
+  margin-bottom: 6px;
+}
+
+.contact-info {
+  font-size: 14px;
+  opacity: 0.9;
+}
+
+/* FOOTER */
+
+footer {
+  background: #17130f;
+  color: white;
+  text-align: center;
+  padding: 30px;
+}
+
+/* MOBILE */
+
+@media (max-width: 600px) {
+
+  .hero h1 {
+    font-size: 35px;
+  }
+
+  header {
+    padding: 15px;
+  }
+
+  .logo {
+    font-size: 20px;
+  }
+
+  .cart {
+    font-size: 14px;
+  }
+
+  .products {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-card {
+    width: 100%;
+  }
+
+}
+
+</style>
 </head>
 
 <body>
 
+<!-- HEADER -->
+
 <header>
-  <div class="logo">OUD ATELIER</div>
+
+  <div class="logo">
+    OUD ATELIER
+  </div>
 
   <button class="cart" onclick="openCart()">
     🛒 Panier (<span id="cartCount">0</span>)
   </button>
+
 </header>
 
+
+<!-- HERO -->
+
 <section class="hero">
+
   <h1>OUD ATELIER</h1>
+
   <p>Parfums d'exception</p>
-  <button class="button" onclick="document.getElementById('products').scrollIntoView()">
+
+  <button
+    class="button"
+    onclick="document.getElementById('products').scrollIntoView()"
+  >
     Découvrir nos parfums
   </button>
+
 </section>
+
+
+<!-- PRODUITS -->
 
 <section class="section" id="products">
 
   <h2>Nos parfums</h2>
 
-  <div class="products">
 
-    <div class="product">
-      <div class="product-image">🧴</div>
-      <h3>Ombre Nomade</h3>
-      <p class="price">2 500 DA</p>
-      <button class="button" onclick="addToCart('Ombre Nomade', 2500)">
-        Ajouter au panier
-      </button>
-    </div>
+  <!-- RECHERCHE -->
 
-    <div class="product">
-      <div class="product-image">🧴</div>
-      <h3>Angel's Share</h3>
-      <p class="price">2 500 DA</p>
-      <button class="button" onclick="addToCart('Angel\\'s Share', 2500)">
-        Ajouter au panier
-      </button>
-    </div>
+  <div class="search-box">
 
-    <div class="product">
-      <div class="product-image">🧴</div>
-      <h3>Hacivat</h3>
-      <p class="price">2 500 DA</p>
-      <button class="button" onclick="addToCart('Hacivat', 2500)">
-        Ajouter au panier
-      </button>
-    </div>
+    <span class="search-icon">🔎</span>
 
-    <div class="product">
-      <div class="product-image">🧴</div>
-      <h3>Grand Soir</h3>
-      <p class="price">2 500 DA</p>
-      <button class="button" onclick="addToCart('Grand Soir', 2500)">
-        Ajouter au panier
-      </button>
-    </div>
+    <input
+      id="searchInput"
+      type="text"
+      placeholder="Rechercher un parfum..."
+      oninput="searchProducts()"
+    >
 
   </div>
+
+
+  <!-- LES PRODUITS SONT CRÉÉS AUTOMATIQUEMENT -->
+
+  <div
+    class="products"
+    id="productList"
+  ></div>
+
 </section>
+
 
 <!-- PANIER -->
 
@@ -275,86 +473,124 @@
 
   <div class="cart-box">
 
-    <button class="close" onclick="closeCart()">×</button>
+    <button
+      class="close"
+      onclick="closeCart()"
+    >
+      ×
+    </button>
 
     <h2>🛒 Votre panier</h2>
 
     <div id="cartItems"></div>
 
-    <h3 id="cartTotal">Total : 0 DA</h3>
+    <h3
+      id="cartTotal"
+      class="cart-total"
+    >
+      Total : 0 DA
+    </h3>
+
 
     <form onsubmit="submitOrder(event)">
 
       <h3>Informations client</h3>
 
-      <input id="name" type="text" placeholder="Nom et prénom" required>
+      <br>
 
-      <input id="phone" type="tel" placeholder="Numéro de téléphone" required>
+      <input
+        id="name"
+        type="text"
+        placeholder="Nom et prénom"
+        required
+      >
+
+      <input
+        id="phone"
+        type="tel"
+        placeholder="Numéro de téléphone"
+        required
+      >
 
       <select id="wilaya" required>
-  <option value="">Choisir votre wilaya</option>
-  <option>Adrar</option>
-  <option>Chlef</option>
-  <option>Laghouat</option>
-  <option>Oum El Bouaghi</option>
-  <option>Batna</option>
-  <option>Béjaïa</option>
-  <option>Biskra</option>
-  <option>Béchar</option>
-  <option>Blida</option>
-  <option>Bouira</option>
-  <option>Tamanrasset</option>
-  <option>Tébessa</option>
-  <option>Tlemcen</option>
-  <option>Tiaret</option>
-  <option>Tizi Ouzou</option>
-  <option>Alger</option>
-  <option>Djelfa</option>
-  <option>Jijel</option>
-  <option>Sétif</option>
-  <option>Saïda</option>
-  <option>Skikda</option>
-  <option>Sidi Bel Abbès</option>
-  <option>Annaba</option>
-  <option>Guelma</option>
-  <option>Constantine</option>
-  <option>Médéa</option>
-  <option>Mostaganem</option>
-  <option>M'Sila</option>
-  <option>Mascara</option>
-  <option>Ouargla</option>
-  <option>Oran</option>
-  <option>El Bayadh</option>
-  <option>Illizi</option>
-  <option>Bordj Bou Arréridj</option>
-  <option>Boumerdès</option>
-  <option>El Tarf</option>
-  <option>Tindouf</option>
-  <option>Tissemsilt</option>
-  <option>El Oued</option>
-  <option>Khenchela</option>
-  <option>Souk Ahras</option>
-  <option>Tipaza</option>
-  <option>Mila</option>
-  <option>Aïn Defla</option>
-  <option>Naâma</option>
-  <option>Aïn Témouchent</option>
-  <option>Ghardaïa</option>
-  <option>Relizane</option>
-  <option>Timimoun</option>
-  <option>Bordj Badji Mokhtar</option>
-  <option>Ouled Djellal</option>
-  <option>Béni Abbès</option>
-  <option>In Salah</option>
-  <option>In Guezzam</option>
-  <option>Touggourt</option>
-  <option>Djanet</option>
-  <option>El M'Ghair</option>
-  <option>El Meniaa</option>
-</select>
-      <textarea id="address" placeholder="Adresse de livraison" required></textarea>
 
-      <button class="button" type="submit">
+        <option value="">
+          Choisir votre wilaya
+        </option>
+
+        <option>Adrar</option>
+        <option>Chlef</option>
+        <option>Laghouat</option>
+        <option>Oum El Bouaghi</option>
+        <option>Batna</option>
+        <option>Béjaïa</option>
+        <option>Biskra</option>
+        <option>Béchar</option>
+        <option>Blida</option>
+        <option>Bouira</option>
+        <option>Tamanrasset</option>
+        <option>Tébessa</option>
+        <option>Tlemcen</option>
+        <option>Tiaret</option>
+        <option>Tizi Ouzou</option>
+        <option>Alger</option>
+        <option>Djelfa</option>
+        <option>Jijel</option>
+        <option>Sétif</option>
+        <option>Saïda</option>
+        <option>Skikda</option>
+        <option>Sidi Bel Abbès</option>
+        <option>Annaba</option>
+        <option>Guelma</option>
+        <option>Constantine</option>
+        <option>Médéa</option>
+        <option>Mostaganem</option>
+        <option>M'Sila</option>
+        <option>Mascara</option>
+        <option>Ouargla</option>
+        <option>Oran</option>
+        <option>El Bayadh</option>
+        <option>Illizi</option>
+        <option>Bordj Bou Arréridj</option>
+        <option>Boumerdès</option>
+        <option>El Tarf</option>
+        <option>Tindouf</option>
+        <option>Tissemsilt</option>
+        <option>El Oued</option>
+        <option>Khenchela</option>
+        <option>Souk Ahras</option>
+        <option>Tipaza</option>
+        <option>Mila</option>
+        <option>Aïn Defla</option>
+        <option>Naâma</option>
+        <option>Aïn Témouchent</option>
+        <option>Ghardaïa</option>
+        <option>Relizane</option>
+        <option>Timimoun</option>
+        <option>Bordj Badji Mokhtar</option>
+        <option>Ouled Djellal</option>
+        <option>Béni Abbès</option>
+        <option>In Salah</option>
+        <option>In Guezzam</option>
+        <option>Touggourt</option>
+        <option>Djanet</option>
+        <option>El M'Ghair</option>
+        <option>El Meniaa</option>
+
+      </select>
+
+
+      <textarea
+        id="address"
+        placeholder="Adresse de livraison"
+        required
+      ></textarea>
+
+
+      <button
+        class="button"
+        type="submit"
+      >
         Confirmer la commande
       </button>
 
@@ -364,125 +600,682 @@
 
 </div>
 
+
+<!-- CONTACT -->
+
+<section class="contact-section">
+
+  <h2>Contactez-nous</h2>
+
+  <div class="contact-container">
+
+
+    <!-- TELEPHONE -->
+
+    <a
+      class="contact-card"
+      href="tel:0782496130"
+    >
+
+      <div class="contact-icon">
+        📞
+      </div>
+
+      <div class="contact-title">
+        Téléphone
+      </div>
+
+      <div class="contact-info">
+        0782 49 61 30
+      </div>
+
+    </a>
+
+
+    <!-- EMAIL -->
+
+    <a
+      class="contact-card"
+      href="mailto:contact@oudatelier.dz"
+    >
+
+      <div class="contact-icon">
+        ✉️
+      </div>
+
+      <div class="contact-title">
+        E-mail
+      </div>
+
+      <div class="contact-info">
+        contact@oudatelier.dz
+      </div>
+
+    </a>
+
+
+    <!-- INSTAGRAM -->
+
+    <a
+      class="contact-card"
+      href="https://www.instagram.com/oud_atelier_alger/"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+
+      <div class="contact-icon">
+        📸
+      </div>
+
+      <div class="contact-title">
+        Instagram
+      </div>
+
+      <div class="contact-info">
+        @oud_atelier_alger
+      </div>
+
+    </a>
+
+  </div>
+
+</section>
+
+
+<!-- FOOTER -->
+
 <footer>
+
   <p>© 2026 Oud Atelier</p>
+
   <p>Parfums d'exception</p>
+
 </footer>
+
 
 <script>
 
-  let cart = [];
+/* =====================================================
+   LISTE DES PARFUMS
+   ===================================================== */
 
-  function addToCart(name, price) {
+const perfumes = [
 
-    const existing = cart.find(item => item.name === name);
+  "Ombre Nomade",
+  "Angel's Share",
+  "Hacivat",
+  "Grand Soir",
 
-    if (existing) {
-      existing.quantity++;
-    } else {
-      cart.push({
-        name: name,
-        price: price,
-        quantity: 1
-      });
-    }
+  "Immensité",
+  "Cherry Smoke",
+  "Santal 33",
+  "Nuit de Feu",
+  "Gris Dior",
+  "Babycat",
+  "Vanilla Powder",
+  "Oud Ispahan",
+  "Bitter Peach",
+  "Love Don't Be Shy",
+  "Portrait of a Lady",
+  "Mojave Ghost",
+  "Afternoon Swim",
+  "Pacific Chill",
+  "Baccarat Rouge 540",
+  "Arabian Tonka",
+  "God of Fire",
+  "Blanche Bête",
+  "Gris Charnel",
+  "Lost Cherry"
 
-    updateCart();
+];
 
-    alert(name + " ajouté au panier.");
+
+/* =====================================================
+   PRIX
+   Pour le moment : prix de démonstration
+   ===================================================== */
+
+const price50 = 2500;
+const price100 = 4000;
+
+
+/* =====================================================
+   PANIER
+   ===================================================== */
+
+let cart = [];
+
+
+/* =====================================================
+   CRÉATION AUTOMATIQUE DES PRODUITS
+   ===================================================== */
+
+function displayProducts(list = perfumes) {
+
+  const productList =
+    document.getElementById("productList");
+
+  productList.innerHTML = "";
+
+
+  if (list.length === 0) {
+
+    productList.innerHTML = `
+      <p style="
+        grid-column:1/-1;
+        text-align:center;
+        font-size:18px;
+      ">
+        Aucun parfum trouvé.
+      </p>
+    `;
+
+    return;
   }
 
-  function updateCart() {
 
-    const items = document.getElementById("cartItems");
+  list.forEach((name, index) => {
 
-    items.innerHTML = "";
+    productList.innerHTML += `
 
-    let total = 0;
-    let count = 0;
+      <div
+        class="product"
+        data-name="${name.toLowerCase()}"
+      >
 
-    cart.forEach((item, index) => {
+        <div class="product-image">
+          🧴
+        </div>
 
-      const subtotal = item.price * item.quantity;
+        <h3>
+          ${name}
+        </h3>
 
-      total += subtotal;
-      count += item.quantity;
 
-      items.innerHTML += `
-        <div class="cart-item">
-          <div>
-            <strong>${item.name}</strong><br>
-            ${item.quantity} × ${item.price} DA
+        <div class="size-title">
+          Choisissez votre format
+        </div>
+
+
+        <!-- 50 ML -->
+
+        <div class="size-row">
+
+          <span class="size-name">
+            50 ml
+          </span>
+
+          <span class="size-price">
+            ${price50.toLocaleString()} DA
+          </span>
+
+          <div class="quantity">
+
+            <button
+              type="button"
+              onclick="changeQuantity(${index}, '50', -1)"
+            >
+              −
+            </button>
+
+            <span id="qty-${index}-50">
+              0
+            </span>
+
+            <button
+              type="button"
+              onclick="changeQuantity(${index}, '50', 1)"
+            >
+              +
+            </button>
+
           </div>
 
-          <button onclick="removeItem(${index})">
-            ❌
-          </button>
         </div>
-      `;
-    });
 
-    document.getElementById("cartTotal").innerText =
-      "Total : " + total.toLocaleString() + " DA";
 
-    document.getElementById("cartCount").innerText = count;
+        <!-- 100 ML -->
+
+        <div class="size-row">
+
+          <span class="size-name">
+            100 ml
+          </span>
+
+          <span class="size-price">
+            ${price100.toLocaleString()} DA
+          </span>
+
+          <div class="quantity">
+
+            <button
+              type="button"
+              onclick="changeQuantity(${index}, '100', -1)"
+            >
+              −
+            </button>
+
+            <span id="qty-${index}-100">
+              0
+            </span>
+
+            <button
+              type="button"
+              onclick="changeQuantity(${index}, '100', 1)"
+            >
+              +
+            </button>
+
+          </div>
+
+        </div>
+
+
+        <button
+          class="button add-button"
+          onclick="addSelectedToCart(${index})"
+        >
+          Ajouter au panier
+        </button>
+
+      </div>
+
+    `;
+
+  });
+
+}
+
+
+/* =====================================================
+   QUANTITÉ 50 / 100 ML
+   ===================================================== */
+
+function changeQuantity(index, size, amount) {
+
+  const element =
+    document.getElementById(
+      `qty-${index}-${size}`
+    );
+
+  let quantity =
+    parseInt(element.innerText);
+
+  quantity += amount;
+
+  if (quantity < 0) {
+    quantity = 0;
   }
 
-  function removeItem(index) {
+  element.innerText = quantity;
+}
 
-    cart.splice(index, 1);
 
-    updateCart();
-  }
+/* =====================================================
+   AJOUTER LE FORMAT CHOISI AU PANIER
+   ===================================================== */
 
-  function openCart() {
+function addSelectedToCart(index) {
 
-    document.getElementById("cartPanel").style.display = "block";
+  const name =
+    perfumes[index];
 
-    updateCart();
-  }
 
-  function closeCart() {
+  const qty50 =
+    parseInt(
+      document.getElementById(
+        `qty-${index}-50`
+      ).innerText
+    );
 
-    document.getElementById("cartPanel").style.display = "none";
-  }
 
-  function submitOrder(event) {
+  const qty100 =
+    parseInt(
+      document.getElementById(
+        `qty-${index}-100`
+      ).innerText
+    );
 
-    event.preventDefault();
 
-    if (cart.length === 0) {
-      alert("Votre panier est vide.");
-      return;
-    }
-
-    const name = document.getElementById("name").value;
-    const phone = document.getElementById("phone").value;
-    const wilaya = document.getElementById("wilaya").value;
-    const address = document.getElementById("address").value;
-
-    let order = "";
-
-    cart.forEach(item => {
-
-      order +=
-        item.name +
-        " × " +
-        item.quantity +
-        " = " +
-        (item.price * item.quantity) +
-        " DA\n";
-    });
+  if (qty50 === 0 && qty100 === 0) {
 
     alert(
-      "Commande enregistrée !\n\n" +
-      "Client : " + name +
-      "\nTéléphone : " + phone +
-      "\nWilaya : " + wilaya +
-      "\nAdresse : " + address +
-      "\n\nProduits :\n" + order
+      "Choisissez au moins une quantité en 50 ml ou 100 ml."
     );
+
+    return;
   }
+
+
+  if (qty50 > 0) {
+
+    addToCart(
+      name,
+      "50 ml",
+      price50,
+      qty50
+    );
+
+  }
+
+
+  if (qty100 > 0) {
+
+    addToCart(
+      name,
+      "100 ml",
+      price100,
+      qty100
+    );
+
+  }
+
+
+  /* remettre les compteurs à zéro */
+
+  document.getElementById(
+    `qty-${index}-50`
+  ).innerText = 0;
+
+
+  document.getElementById(
+    `qty-${index}-100`
+  ).innerText = 0;
+
+
+  alert(
+    name + " ajouté au panier."
+  );
+
+}
+
+
+/* =====================================================
+   AJOUT PANIER
+   ===================================================== */
+
+function addToCart(
+  name,
+  size,
+  price,
+  quantity
+) {
+
+  const existing =
+    cart.find(
+      item =>
+        item.name === name &&
+        item.size === size
+    );
+
+
+  if (existing) {
+
+    existing.quantity += quantity;
+
+  } else {
+
+    cart.push({
+
+      name: name,
+
+      size: size,
+
+      price: price,
+
+      quantity: quantity
+
+    });
+
+  }
+
+
+  updateCart();
+}
+
+
+/* =====================================================
+   AFFICHER PANIER
+   ===================================================== */
+
+function updateCart() {
+
+  const items =
+    document.getElementById("cartItems");
+
+  items.innerHTML = "";
+
+
+  let total = 0;
+
+  let count = 0;
+
+
+  cart.forEach((item, index) => {
+
+    const subtotal =
+      item.price * item.quantity;
+
+
+    total += subtotal;
+
+    count += item.quantity;
+
+
+    items.innerHTML += `
+
+      <div class="cart-item">
+
+        <div>
+
+          <strong>
+            ${item.name}
+          </strong>
+
+          <br>
+
+          ${item.size}
+
+          × ${item.quantity}
+
+          <br>
+
+          ${subtotal.toLocaleString()} DA
+
+        </div>
+
+
+        <button
+          onclick="removeItem(${index})"
+        >
+          ❌
+        </button>
+
+      </div>
+
+    `;
+
+  });
+
+
+  document.getElementById(
+    "cartTotal"
+  ).innerText =
+    "Total : " +
+    total.toLocaleString() +
+    " DA";
+
+
+  document.getElementById(
+    "cartCount"
+  ).innerText = count;
+
+}
+
+
+/* =====================================================
+   SUPPRIMER ARTICLE
+   ===================================================== */
+
+function removeItem(index) {
+
+  cart.splice(index, 1);
+
+  updateCart();
+
+}
+
+
+/* =====================================================
+   OUVRIR PANIER
+   ===================================================== */
+
+function openCart() {
+
+  document.getElementById(
+    "cartPanel"
+  ).style.display = "block";
+
+  updateCart();
+
+}
+
+
+/* =====================================================
+   FERMER PANIER
+   ===================================================== */
+
+function closeCart() {
+
+  document.getElementById(
+    "cartPanel"
+  ).style.display = "none";
+
+}
+
+
+/* =====================================================
+   RECHERCHE
+   ===================================================== */
+
+function searchProducts() {
+
+  const search =
+    document.getElementById(
+      "searchInput"
+    ).value
+    .toLowerCase()
+    .trim();
+
+
+  const filtered =
+    perfumes.filter(
+      perfume =>
+        perfume
+          .toLowerCase()
+          .includes(search)
+    );
+
+
+  displayProducts(filtered);
+
+}
+
+
+/* =====================================================
+   COMMANDE
+   ===================================================== */
+
+function submitOrder(event) {
+
+  event.preventDefault();
+
+
+  if (cart.length === 0) {
+
+    alert(
+      "Votre panier est vide."
+    );
+
+    return;
+  }
+
+
+  const name =
+    document.getElementById(
+      "name"
+    ).value;
+
+
+  const phone =
+    document.getElementById(
+      "phone"
+    ).value;
+
+
+  const wilaya =
+    document.getElementById(
+      "wilaya"
+    ).value;
+
+
+  const address =
+    document.getElementById(
+      "address"
+    ).value;
+
+
+  let order = "";
+
+
+  cart.forEach(item => {
+
+    order +=
+      item.name +
+      " — " +
+      item.size +
+      " × " +
+      item.quantity +
+      " = " +
+      (
+        item.price *
+        item.quantity
+      ).toLocaleString() +
+      " DA\n";
+
+  });
+
+
+  alert(
+
+    "Commande enregistrée !\n\n" +
+
+    "Client : " +
+    name +
+
+    "\nTéléphone : " +
+    phone +
+
+    "\nWilaya : " +
+    wilaya +
+
+    "\nAdresse : " +
+    address +
+
+    "\n\nProduits :\n" +
+
+    order
+
+  );
+
+}
+
+
+/* =====================================================
+   AFFICHER LES PRODUITS AU CHARGEMENT
+   ===================================================== */
+
+displayProducts();
 
 </script>
 
